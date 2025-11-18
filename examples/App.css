@@ -1,0 +1,556 @@
+/* Base Styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+section {
+  padding: 5rem 0;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #000000;
+}
+
+[data-theme="dark"] .section-title {
+  color: #FFFFFF;
+}
+
+/* Projects Section */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.project-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #E0E0E0;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+[data-theme="dark"] .project-card {
+  background: #1A1A1A;
+  border-color: #333333;
+}
+
+.project-card.animate-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.project-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+  border-color: #000000;
+}
+
+[data-theme="dark"] .project-card:hover {
+  border-color: #FFFFFF;
+}
+
+.project-image {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.15) rotate(1deg);
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(2px);
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-link {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 50%;
+  color: #000000;
+  font-size: 1.25rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(0.8);
+  opacity: 0;
+}
+
+.project-card:hover .project-link {
+  transform: scale(1);
+  opacity: 1;
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+.project-link:hover {
+  transform: scale(1.15) rotate(5deg);
+  background: #000000;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.project-content {
+  padding: 1.5rem;
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-content {
+  transform: translateY(-2px);
+}
+
+.project-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #000000;
+  transition: color 0.3s ease;
+}
+
+[data-theme="dark"] .project-name {
+  color: #FFFFFF;
+}
+
+.project-card:hover .project-name {
+  color: #000000;
+}
+
+[data-theme="dark"] .project-card:hover .project-name {
+  color: #FFFFFF;
+}
+
+.project-description {
+  color: #4A4A4A;
+  margin-bottom: 1rem;
+}
+
+[data-theme="dark"] .project-description {
+  color: #B0B0B0;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.project-tag {
+  background: #F5F5F5;
+  color: #000000;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+  animation: slideInRight 0.4s ease-out forwards;
+}
+
+[data-theme="dark"] .project-tag {
+  background: #1A1A1A;
+  color: #FFFFFF;
+}
+
+.project-card.animate-in .project-tag {
+  animation: slideInRight 0.4s ease-out forwards;
+}
+
+.project-card:hover .project-tag {
+  transform: translateX(0);
+  background: #000000;
+  color: white;
+}
+
+[data-theme="dark"] .project-card:hover .project-tag {
+  background: #FFFFFF;
+  color: #000000;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.project-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.github-btn {
+  background: #F5F5F5;
+  color: #000000;
+  border: 1px solid #E0E0E0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] .github-btn {
+  background: #1A1A1A;
+  color: #FFFFFF;
+  border-color: #333333;
+}
+
+.project-card.animate-in .github-btn {
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.github-btn:hover {
+  background: #000000;
+  color: white;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
+  border-color: #000000;
+}
+
+[data-theme="dark"] .github-btn:hover {
+  background: #FFFFFF;
+  color: #000000;
+  border-color: #FFFFFF;
+}
+
+/* About Section */
+.about {
+  background: #F5F5F5;
+}
+
+[data-theme="dark"] .about {
+  background: #1A1A1A;
+}
+
+/* Tech Stack Section */
+.tech-stack {
+  background: #F5F5F5;
+}
+
+[data-theme="dark"] .tech-stack {
+  background: #1A1A1A;
+}
+
+/* Goals Section */
+.goals {
+  background: #F5F5F5;
+}
+
+[data-theme="dark"] .goals {
+  background: #1A1A1A;
+}
+
+/* Contact Section */
+.contact {
+  background: #FFFFFF;
+}
+
+[data-theme="dark"] .contact {
+  background: #000000;
+}
+
+/* GitHub Stats Section */
+.github-stats {
+  background: #FFFFFF;
+}
+
+[data-theme="dark"] .github-stats {
+  background: #000000;
+}
+
+/* Snake Section */
+.snake-section {
+  background: #F5F5F5;
+}
+
+[data-theme="dark"] .snake-section {
+  background: #1A1A1A;
+}
+
+/* Global dark mode support for common elements */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] p {
+  color: #D1D5DB;
+}
+
+[data-theme="dark"] .text-gray-900 {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .text-gray-600 {
+  color: #D1D5DB !important;
+}
+
+[data-theme="dark"] .bg-white {
+  background-color: #1F2937 !important;
+}
+
+[data-theme="dark"] .bg-gray-100 {
+  background-color: #111827 !important;
+}
+
+/* Hero Social Icons Styles */
+.social-icon-link {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--social-color);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--social-color);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(20px) scale(0.8);
+  animation: socialIconFadeIn 0.6s ease-out forwards;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.social-icon-link::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: var(--social-color);
+  opacity: 0.3;
+  transform: translate(-50%, -50%);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-icon-link:hover::before {
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+}
+
+.social-icon-wrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.social-icon {
+  font-size: 1.5rem;
+  color: #FFFFFF;
+  transition: all 0.3s ease;
+  z-index: 3;
+}
+
+.social-icon-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: blur(15px);
+  z-index: 1;
+}
+
+.social-icon-link:hover {
+  transform: translateY(-8px) scale(1.1);
+  animation: socialIconPulse 0.6s ease-in-out;
+}
+
+.social-icon-link:hover .social-icon {
+  color: #FFFFFF;
+  transform: scale(1.2) rotate(5deg);
+}
+
+.social-icon-link:hover .social-icon-glow {
+  width: 80px;
+  height: 80px;
+  opacity: 0.6;
+}
+
+.social-icon-link:active {
+  transform: translateY(-6px) scale(1.05);
+}
+
+/* Specific colors for each social icon - Background colors */
+.social-icon-link:nth-child(1) {
+  background: #181717;
+  border-color: #181717;
+}
+
+.social-icon-link:nth-child(1):hover {
+  background: #2d2d2d;
+  border-color: #181717;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px #181717;
+}
+
+.social-icon-link:nth-child(1):hover .social-icon {
+  color: #FFFFFF;
+}
+
+.social-icon-link:nth-child(2) {
+  background: #0077B5;
+  border-color: #0077B5;
+}
+
+.social-icon-link:nth-child(2):hover {
+  background: #005885;
+  border-color: #0077B5;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px #0077B5;
+}
+
+.social-icon-link:nth-child(2):hover .social-icon {
+  color: #FFFFFF;
+}
+
+.social-icon-link:nth-child(3) {
+  background: #EA4335;
+  border-color: #EA4335;
+}
+
+.social-icon-link:nth-child(3):hover {
+  background: #c5221f;
+  border-color: #EA4335;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px #EA4335;
+}
+
+.social-icon-link:nth-child(3):hover .social-icon {
+  color: #FFFFFF;
+}
+
+.social-icon-link:nth-child(4) {
+  background: #1DA1F2;
+  border-color: #1DA1F2;
+}
+
+.social-icon-link:nth-child(4):hover {
+  background: #0d8bd9;
+  border-color: #1DA1F2;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px #1DA1F2;
+}
+
+.social-icon-link:nth-child(4):hover .social-icon {
+  color: #FFFFFF;
+}
+
+@keyframes socialIconFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8) rotate(-180deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes socialIconPulse {
+  0%, 100% {
+    transform: translateY(-8px) scale(1.1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.15);
+  }
+}
+
