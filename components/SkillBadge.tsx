@@ -1,10 +1,16 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
+import { getSkillIcon } from '@/utils/skillIcons';
 
 interface SkillBadgeProps {
   skill: string;
   index?: number;
+}
+
+function renderSkillIcon(skill: string) {
+  const IconComponent = getSkillIcon(skill);
+  return <IconComponent className="text-base flex-shrink-0" />;
 }
 
 export function SkillBadge({ skill, index = 0 }: SkillBadgeProps) {
@@ -14,11 +20,12 @@ export function SkillBadge({ skill, index = 0 }: SkillBadgeProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.3, delay: index * 0.05 }}
+      whileHover={{ scale: 1.05, y: -2 }}
     >
-      <span className="inline-block rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700">
-        {skill}
-      </span>
+      <div className="flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium bg-neutral-800 text-gray-200 border border-neutral-700 hover:bg-neutral-700 hover:border-neutral-600 transition-all duration-200 shadow-sm hover:shadow-md">
+        {renderSkillIcon(skill)}
+        <span>{skill}</span>
+      </div>
     </motion.div>
   );
 }
-

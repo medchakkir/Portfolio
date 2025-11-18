@@ -1,51 +1,63 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 
 export function Header() {
-  const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      setActiveSection(href);
+    }
+  };
+
   const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/projects", label: "Projects" },
-    { href: "/contact", label: "Contact" },
+    { href: "#about", label: "About" },
+    { href: "#projects", label: "Projects" },
+    { href: "#skills", label: "Skills" },
+    { href: "#contact", label: "Contact" },
   ];
 
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur-sm dark:border-gray-800 dark:bg-gray-950/80">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <nav className="flex h-16 items-center justify-between">
-          <Link
-            href="/"
-            className="text-xl font-bold text-gray-900 transition-colors hover:text-gray-700 dark:text-gray-100 dark:hover:text-gray-300"
+          <a
+            href="#about"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="text-xl font-bold text-gray-900 transition-colors hover:text-gray-700 dark:text-gray-100 dark:hover:text-gray-300 cursor-pointer"
           >
             Mohamed Chakkir
-          </Link>
+          </a>
 
           <div className="flex items-center gap-6">
             <div className="hidden gap-6 sm:flex">
               {navLinks.map((link) => (
-                <Link
+                <a
                   key={link.href}
                   href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className={`text-sm font-medium transition-colors ${
-                    pathname === link.href
+                    activeSection === link.href
                       ? "text-gray-900 dark:text-gray-100"
                       : "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
                   }`}
                 >
                   {link.label}
-                </Link>
+                </a>
               ))}
             </div>
 
