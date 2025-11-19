@@ -21,11 +21,11 @@ export function AchievementCard({
       transition={{ duration: 0.4, delay: index * 0.1 }}
       whileHover={{ y: -4, scale: 1.02 }}
     >
-      <div className="h-full rounded-lg border border-blue-200 bg-white/90 backdrop-blur-sm p-6 shadow-sm hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 dark:border-blue-800 dark:bg-blue-950/90 dark:backdrop-blur-sm dark:hover:shadow-blue-500/30">
-        <h3 className="mb-2 text-lg font-semibold text-blue-900 dark:text-blue-100">
+      <div className="h-full rounded-lg border border-blue-200 bg-white/90 backdrop-blur-sm p-6 shadow-sm hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300">
+        <h3 className="mb-2 text-lg font-semibold text-blue-900">
           {title}
         </h3>
-        <p className="text-blue-900/70 dark:text-blue-200/70">{description}</p>
+        <p className="text-blue-900/70">{description}</p>
       </div>
     </motion.div>
   );

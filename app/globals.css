@@ -17,20 +17,6 @@
   --surface-light: #f0f9ff;
 }
 
-.dark {
-  --background: #020617;
-  --foreground: #f1f5f9;
-  --primary: #0ea5e9;
-  --primary-dark: #0284c7;
-  --accent: #38bdf8;
-  --border-dark: #1e3a8a;
-  --surface-dark: #0c1e3d;
-}
-
-html.dark {
-  color-scheme: dark;
-}
-
 html {
   scroll-behavior: smooth;
 }
