@@ -9,15 +9,25 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
+  --primary: #0ea5e9;
+  --primary-dark: #0284c7;
+  --accent: #38bdf8;
+  --border-light: #bfdbfe;
+  --surface-light: #f0f9ff;
 }
 
-[data-theme="dark"] {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+.dark {
+  --background: #020617;
+  --foreground: #f1f5f9;
+  --primary: #0ea5e9;
+  --primary-dark: #0284c7;
+  --accent: #38bdf8;
+  --border-dark: #1e3a8a;
+  --surface-dark: #0c1e3d;
 }
 
-html[data-theme="dark"] {
+html.dark {
   color-scheme: dark;
 }
 

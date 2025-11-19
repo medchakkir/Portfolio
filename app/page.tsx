@@ -12,141 +12,119 @@ import { skills } from '@/data/skills';
 import { achievements } from '@/data/achievements';
 import { projects } from '@/data/projects';
 import { getCategoryIcon } from '@/utils/skillIcons';
+import { useLanguage } from '@/context/LanguageContext';
+import { translations } from '@/data/translations';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
 export default function Home() {
+  const { language } = useLanguage();
+  const t = translations[language];
   const featuredProjects = projects.filter((p) => p.featured);
 
   return (
-    <div className="flex min-h-screen flex-col bg-white dark:bg-gray-950">
+    <div className="flex min-h-screen flex-col bg-white dark:bg-blue-950">
       <Header />
       <main className="flex-1">
         {/* Hero Section */}
-        <Section
-          id="about"
-          className="min-h-screen flex items-center bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900"
-        >
-          <Container>
-            <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
-              {/* Left Side - Profile Picture */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                className="flex justify-center lg:justify-start"
-              >
-                <div className="relative h-64 w-64 sm:h-80 sm:w-80 lg:h-96 lg:w-96">
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800"></div>
-                  <div className="absolute inset-2 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800">
-                    <span className="text-4xl">👤</span>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Right Side - Content */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
+        <Section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-blue-950 dark:via-blue-900 dark:to-blue-950 relative overflow-hidden">
+          {/* Decorative Elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-400/10 rounded-full blur-3xl"></div>
+            <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-cyan-400/10 rounded-full blur-3xl"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+          </div>
+          <Container className="relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center max-w-4xl mx-auto"
+            >
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-center lg:text-left"
+                className="mb-6 text-5xl font-bold tracking-tight text-blue-900 sm:text-6xl lg:text-7xl dark:text-blue-100"
               >
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                  className="mb-4 text-4xl"
+                {t.hero.greeting} <br />
+                <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-cyan-300">
+                  {t.hero.name}
+                </span>
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="mb-8 text-2xl font-semibold text-blue-700 dark:text-blue-300"
+              >
+                {t.hero.role}
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="mb-12 text-xl leading-8 text-blue-900/80 dark:text-blue-200/80 max-w-3xl mx-auto"
+              >
+                {t.hero.description}
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                className="flex flex-wrap justify-center gap-4"
+              >
+                <a
+                  href="https://github.com/medchakkir"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-14 w-14 items-center justify-center rounded-full bg-blue-600 text-white transition-all hover:scale-110 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/50 dark:bg-blue-500 dark:hover:bg-blue-400 dark:hover:shadow-blue-400/50"
+                  aria-label="GitHub"
                 >
-                  👋
-                </motion.div>
-                <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                  className="mb-4 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl dark:text-gray-100"
+                  <FaGithub className="h-7 w-7" />
+                </a>
+                <a
+                  href="https://linkedin.com/in/medchakkir"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-14 w-14 items-center justify-center rounded-full bg-blue-600 text-white transition-all hover:scale-110 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/50 dark:bg-blue-500 dark:hover:bg-blue-400 dark:hover:shadow-blue-400/50"
+                  aria-label="LinkedIn"
                 >
-                  Hi, I&apos;m Mohamed Chakkir!
-                </motion.h1>
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
-                  className="mb-6 text-xl font-semibold text-gray-700 dark:text-gray-300"
+                  <FaLinkedin className="h-7 w-7" />
+                </a>
+                <a
+                  href="mailto:medchakkir@gmail.com"
+                  className="flex h-14 w-14 items-center justify-center rounded-full bg-blue-600 text-white transition-all hover:scale-110 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/50 dark:bg-blue-500 dark:hover:bg-blue-400 dark:hover:shadow-blue-400/50"
+                  aria-label="Email"
                 >
-                  Full-Stack Developer & AI Enthusiast
-                </motion.p>
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
-                  className="mb-8 text-lg leading-8 text-gray-600 dark:text-gray-400"
-                >
-                  Full-stack developer with a growing focus on AI and Data
-                  Science. I design efficient interfaces, reliable backend
-                  systems, and explore machine-learning techniques to push
-                  digital products forward.
-                </motion.p>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.7 }}
-                  className="flex flex-wrap justify-center lg:justify-start gap-4"
-                >
-                  <a
-                    href="https://github.com/medchakkir"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-900 text-white transition-colors hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200"
-                    aria-label="GitHub"
-                  >
-                    <svg
-                      className="h-6 w-6"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
-                  </a>
-                  <a
-                    href="https://linkedin.com/in/medchakkir"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-900 text-white transition-colors hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200"
-                    aria-label="LinkedIn"
-                  >
-                    <svg
-                      className="h-6 w-6"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                    </svg>
-                  </a>
-                  <a
-                    href="mailto:medchakkir@gmail.com"
-                    className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-900 text-white transition-colors hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200"
-                    aria-label="Email"
-                  >
-                    <svg
-                      className="h-6 w-6"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </a>
-                </motion.div>
+                  <FaEnvelope className="h-7 w-7" />
+                </a>
               </motion.div>
-            </div>
+            </motion.div>
+          </Container>
+        </Section>
+
+        {/* About Section */}
+        <Section id="about" className="bg-blue-50 dark:bg-blue-900">
+          <Container>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mx-auto max-w-3xl text-center"
+            >
+              <h2 className="mb-6 text-4xl font-bold tracking-tight text-blue-900 sm:text-5xl dark:text-blue-100">
+                About Me
+              </h2>
+              <p className="text-xl leading-relaxed text-blue-900/80 dark:text-blue-200/80">
+                {t.hero.description}
+              </p>
+            </motion.div>
           </Container>
         </Section>
 
         {/* Projects Section */}
-        <Section id="projects" className="bg-gray-50 dark:bg-gray-900">
+        <Section id="projects" className="bg-white dark:bg-blue-950">
           <Container>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -155,14 +133,20 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="mb-12 text-center"
             >
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-100">
-                Featured Projects
+              <h2 className="text-4xl font-bold tracking-tight text-blue-900 sm:text-5xl dark:text-blue-100">
+                {t.projects.title}
               </h2>
-              <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
-                A selection of projects showcasing my skills and experience
+              <p className="mt-6 text-xl leading-relaxed text-blue-900/80 dark:text-blue-200/80">
+                {t.projects.description}
               </p>
             </motion.div>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <motion.div
+              className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, staggerChildren: 0.1 }}
+            >
               {featuredProjects.map((project, index) => (
                 <ProjectCard
                   key={project.slug}
@@ -174,12 +158,12 @@ export default function Home() {
                   index={index}
                 />
               ))}
-            </div>
+            </motion.div>
           </Container>
         </Section>
 
         {/* Skills Section */}
-        <Section id="skills">
+        <Section id="skills" className="bg-blue-50 dark:bg-blue-900">
           <Container>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -188,8 +172,8 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="mb-12 text-center"
             >
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-100">
-                Skills & Technologies
+              <h2 className="text-4xl font-bold tracking-tight text-blue-900 sm:text-5xl dark:text-blue-100">
+                {t.skills.title}
               </h2>
             </motion.div>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -203,11 +187,11 @@ export default function Home() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: categoryIndex * 0.1 }}
                     whileHover={{ scale: 1.02, y: -4 }}
-                    className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-lg dark:border-gray-800 dark:bg-gray-900 dark:shadow-gray-900/50"
+                    className="rounded-xl border border-blue-200 bg-white/90 backdrop-blur-sm p-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/20 dark:border-blue-800 dark:bg-blue-950/90 dark:backdrop-blur-sm dark:shadow-blue-900/50 dark:hover:shadow-blue-500/30"
                   >
                     <div className="mb-4 flex items-center gap-3">
-                      <CategoryIcon className="text-2xl text-gray-700 dark:text-gray-300" />
-                      <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+                      <CategoryIcon className="text-2xl text-blue-600 dark:text-blue-400" />
+                      <h3 className="text-xl font-semibold text-blue-900 dark:text-blue-100">
                         {category.category}
                       </h3>
                     </div>
@@ -224,7 +208,7 @@ export default function Home() {
         </Section>
 
         {/* Achievements Section */}
-        <Section className="bg-gray-50 dark:bg-gray-900">
+        <Section className="bg-white dark:bg-blue-950">
           <Container>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -233,11 +217,17 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="mb-12 text-center"
             >
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-100">
-                Achievements & Certifications
+              <h2 className="text-4xl font-bold tracking-tight text-blue-900 sm:text-5xl dark:text-blue-100">
+                {t.achievements.title}
               </h2>
             </motion.div>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <motion.div
+              className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, staggerChildren: 0.1 }}
+            >
               {achievements.map((achievement, index) => (
                 <AchievementCard
                   key={achievement.title}
@@ -246,12 +236,12 @@ export default function Home() {
                   index={index}
                 />
               ))}
-            </div>
+            </motion.div>
           </Container>
         </Section>
 
         {/* Contact Section */}
-        <Section id="contact">
+        <Section id="contact" className="bg-blue-50 dark:bg-blue-900">
           <Container>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -260,61 +250,36 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="mx-auto max-w-3xl text-center"
             >
-              <h2 className="mb-6 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-100">
-                Let&apos;s build something impactful.
+              <h2 className="mb-6 text-4xl font-bold tracking-tight text-blue-900 sm:text-5xl dark:text-blue-100">
+                {t.contact.title}
               </h2>
-              <p className="mb-12 text-lg leading-8 text-gray-600 dark:text-gray-400">
-                If you want to collaborate, discuss a project, or explore
-                opportunities, I&apos;m always open to a conversation.
+              <p className="mb-12 text-xl leading-relaxed text-blue-900/80 dark:text-blue-200/80">
+                {t.contact.description}
               </p>
               <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
                 <a
-                  href="mailto:medchakkir@gmail.com"
-                  className="flex items-center gap-2 rounded-lg bg-gray-900 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200"
+                  href={`mailto:${t.contact.email}`}
+                  className="flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-base font-semibold text-white transition-all hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/50 dark:bg-blue-500 dark:hover:bg-blue-400 dark:hover:shadow-blue-400/50"
                 >
-                  <svg
-                    className="h-5 w-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                  medchakkir@gmail.com
+                  <FaEnvelope className="h-5 w-5" />
+                  {t.contact.email}
                 </a>
                 <a
                   href="https://github.com/medchakkir"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-6 py-3 text-base font-semibold text-gray-900 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+                  className="flex items-center gap-2 rounded-lg border border-blue-300 bg-white px-6 py-3 text-base font-semibold text-blue-900 transition-all hover:bg-blue-50 hover:border-blue-400 dark:border-blue-700 dark:bg-blue-950 dark:text-blue-100 dark:hover:bg-blue-900 dark:hover:border-blue-600"
                 >
-                  <svg
-                    className="h-5 w-5"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                  </svg>
+                  <FaGithub className="h-5 w-5" />
                   GitHub
                 </a>
                 <a
                   href="https://linkedin.com/in/medchakkir"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-6 py-3 text-base font-semibold text-gray-900 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+                  className="flex items-center gap-2 rounded-lg border border-blue-300 bg-white px-6 py-3 text-base font-semibold text-blue-900 transition-all hover:bg-blue-50 hover:border-blue-400 dark:border-blue-700 dark:bg-blue-950 dark:text-blue-100 dark:hover:bg-blue-900 dark:hover:border-blue-600"
                 >
-                  <svg
-                    className="h-5 w-5"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                  </svg>
+                  <FaLinkedin className="h-5 w-5" />
                   LinkedIn
                 </a>
               </div>
