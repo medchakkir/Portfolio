@@ -1,25 +1,26 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { LanguageProvider } from "@/context/LanguageContext";
+import type { Metadata } from 'next';
+import { Geist, Geist_Mono } from 'next/font/google';
+import './globals.css';
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-  title: "Mohamed Chakkir | Full-Stack Developer",
-  description: "Full-Stack Developer exploring AI & Machine Learning. Building smart, scalable web experiences.",
+  title: 'Mohamed Chakkir | Full-Stack Developer',
+  description:
+    'Full-Stack Developer exploring AI & Machine Learning. Building smart, scalable web experiences.',
   openGraph: {
-    title: "Mohamed Chakkir | Full-Stack Developer",
-    description: "Full-Stack Developer exploring AI & Machine Learning. Building smart, scalable web experiences.",
-    type: "website",
+    title: 'Mohamed Chakkir | Full-Stack Developer',
+    description:
+      'Full-Stack Developer exploring AI & Machine Learning. Building smart, scalable web experiences.',
+    type: 'website',
   },
 };
 
@@ -33,9 +34,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
       >
-        <LanguageProvider>
-          {children}
-        </LanguageProvider>
+        {children}
       </body>
     </html>
   );

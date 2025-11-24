@@ -12,13 +12,9 @@ import { skills } from '@/data/skills';
 import { achievements } from '@/data/achievements';
 import { projects } from '@/data/projects';
 import { getCategoryIcon } from '@/utils/skillIcons';
-import { useLanguage } from '@/context/LanguageContext';
-import { translations } from '@/data/translations';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
 export default function Home() {
-  const { language } = useLanguage();
-  const t = translations[language];
   const featuredProjects = projects.filter((p) => p.featured);
 
   return (
@@ -26,12 +22,12 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         {/* Hero Section */}
-        <Section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-50 relative overflow-hidden">
+        <Section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
           {/* Decorative Elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-400/10 rounded-full blur-3xl"></div>
-            <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-cyan-400/10 rounded-full blur-3xl"></div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+            <div className="absolute -top-40 -right-40 w-80 h-80 bg-gray-200/10 rounded-full blur-3xl"></div>
+            <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gray-200/10 rounded-full blur-3xl"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gray-200/5 rounded-full blur-3xl"></div>
           </div>
           <Container className="relative z-10">
             <motion.div
@@ -44,59 +40,60 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="mb-6 text-5xl font-bold tracking-tight text-blue-900 sm:text-6xl lg:text-7xl"
+                className="mb-4 sm:mb-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 px-4"
               >
-                {t.hero.greeting} <br />
-                <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
-                  {t.hero.name}
-                </span>
+                👋 Hi, I&apos;m <br />
+                <span className="text-gray-900">Mohamed Chakkir!</span>
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="mb-8 text-2xl font-semibold text-blue-700"
+                className="mb-6 sm:mb-8 text-xl sm:text-2xl font-semibold text-gray-700"
               >
-                {t.hero.role}
+                Full-Stack Developer & AI Enthusiast
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
-                className="mb-12 text-xl leading-8 text-blue-900/80 max-w-3xl mx-auto"
+                className="mb-8 sm:mb-12 text-base sm:text-lg lg:text-xl leading-7 sm:leading-8 text-gray-700 max-w-3xl mx-auto px-4"
               >
-                {t.hero.description}
+                Full-stack developer with a growing focus on AI and Data
+                Science. I design efficient interfaces, reliable backend
+                systems, and explore machine-learning techniques to push digital
+                products forward.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
-                className="flex flex-wrap justify-center gap-4"
+                className="flex flex-wrap justify-center gap-3 sm:gap-4"
               >
                 <a
                   href="https://github.com/medchakkir"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-14 w-14 items-center justify-center rounded-full bg-blue-600 text-white transition-all hover:scale-110 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/50"
+                  className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-gray-900 text-white transition-all hover:scale-110 hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/50"
                   aria-label="GitHub"
                 >
-                  <FaGithub className="h-7 w-7" />
+                  <FaGithub className="h-6 w-6 sm:h-7 sm:w-7" />
                 </a>
                 <a
                   href="https://linkedin.com/in/medchakkir"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-14 w-14 items-center justify-center rounded-full bg-blue-600 text-white transition-all hover:scale-110 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/50"
+                  className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-gray-900 text-white transition-all hover:scale-110 hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/50"
                   aria-label="LinkedIn"
                 >
-                  <FaLinkedin className="h-7 w-7" />
+                  <FaLinkedin className="h-6 w-6 sm:h-7 sm:w-7" />
                 </a>
                 <a
                   href="mailto:medchakkir@gmail.com"
-                  className="flex h-14 w-14 items-center justify-center rounded-full bg-blue-600 text-white transition-all hover:scale-110 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/50"
+                  className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-gray-900 text-white transition-all hover:scale-110 hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/50"
                   aria-label="Email"
                 >
-                  <FaEnvelope className="h-7 w-7" />
+                  <FaEnvelope className="h-6 w-6 sm:h-7 sm:w-7" />
                 </a>
               </motion.div>
             </motion.div>
@@ -104,7 +101,7 @@ export default function Home() {
         </Section>
 
         {/* About Section */}
-        <Section id="about" className="bg-blue-50">
+        <Section id="about" className="bg-white">
           <Container>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -113,18 +110,21 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="mx-auto max-w-3xl text-center"
             >
-              <h2 className="mb-6 text-4xl font-bold tracking-tight text-blue-900 sm:text-5xl">
+              <h2 className="mb-4 sm:mb-6 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900">
                 About Me
               </h2>
-              <p className="text-xl leading-relaxed text-blue-900/80">
-                {t.hero.description}
+              <p className="text-lg sm:text-xl leading-relaxed text-gray-700">
+                Full-stack developer with a growing focus on AI and Data
+                Science. I design efficient interfaces, reliable backend
+                systems, and explore machine-learning techniques to push digital
+                products forward.
               </p>
             </motion.div>
           </Container>
         </Section>
 
         {/* Projects Section */}
-        <Section id="projects" className="bg-white">
+        <Section id="projects" className="bg-gray-50">
           <Container>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -133,11 +133,11 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="mb-12 text-center"
             >
-              <h2 className="text-4xl font-bold tracking-tight text-blue-900 sm:text-5xl">
-                {t.projects.title}
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900">
+                Featured Projects
               </h2>
-              <p className="mt-6 text-xl leading-relaxed text-blue-900/80">
-                {t.projects.description}
+              <p className="mt-4 sm:mt-6 text-lg sm:text-xl leading-relaxed text-gray-700">
+                A selection of projects showcasing my skills and experience
               </p>
             </motion.div>
             <motion.div
@@ -154,6 +154,7 @@ export default function Home() {
                   description={project.description}
                   tags={project.tags}
                   github={project.github}
+                  demo={project.demo}
                   image={project.image}
                   index={index}
                 />
@@ -163,7 +164,7 @@ export default function Home() {
         </Section>
 
         {/* Skills Section */}
-        <Section id="skills" className="bg-blue-50">
+        <Section id="skills" className="bg-white">
           <Container>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -172,8 +173,8 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="mb-12 text-center"
             >
-              <h2 className="text-4xl font-bold tracking-tight text-blue-900 sm:text-5xl">
-                {t.skills.title}
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900">
+                Skills & Technologies
               </h2>
             </motion.div>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -187,11 +188,11 @@ export default function Home() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: categoryIndex * 0.1 }}
                     whileHover={{ scale: 1.02, y: -4 }}
-                    className="rounded-xl border border-blue-200 bg-white/90 backdrop-blur-sm p-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/20"
+                    className="rounded-xl border border-gray-200 bg-white/90 backdrop-blur-sm p-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-gray-500/20"
                   >
                     <div className="mb-4 flex items-center gap-3">
-                      <CategoryIcon className="text-2xl text-blue-600" />
-                      <h3 className="text-xl font-semibold text-blue-900">
+                      <CategoryIcon className="text-2xl text-gray-600" />
+                      <h3 className="text-xl font-semibold text-gray-900">
                         {category.category}
                       </h3>
                     </div>
@@ -208,7 +209,7 @@ export default function Home() {
         </Section>
 
         {/* Achievements Section */}
-        <Section className="bg-white">
+        <Section className="bg-gray-50">
           <Container>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -217,8 +218,8 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="mb-12 text-center"
             >
-              <h2 className="text-4xl font-bold tracking-tight text-blue-900 sm:text-5xl">
-                {t.achievements.title}
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900">
+                Achievements & Certifications
               </h2>
             </motion.div>
             <motion.div
@@ -233,6 +234,9 @@ export default function Home() {
                   key={achievement.title}
                   title={achievement.title}
                   description={achievement.description}
+                  date={achievement.date}
+                  verificationUrl={achievement.verificationUrl}
+                  icon={achievement.icon}
                   index={index}
                 />
               ))}
@@ -241,47 +245,76 @@ export default function Home() {
         </Section>
 
         {/* Contact Section */}
-        <Section id="contact" className="bg-blue-50">
+        <Section id="contact" className="bg-white">
           <Container>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="mx-auto max-w-3xl text-center"
+              className="mx-auto max-w-4xl text-center"
             >
-              <h2 className="mb-6 text-4xl font-bold tracking-tight text-blue-900 sm:text-5xl">
-                {t.contact.title}
+              <h2 className="mb-4 sm:mb-6 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900">
+                Let&apos;s stay in touch!
               </h2>
-              <p className="mb-12 text-xl leading-relaxed text-blue-900/80">
-                {t.contact.description}
+              <p className="mb-8 sm:mb-12 text-lg sm:text-xl leading-relaxed text-gray-700">
+                I&apos;m always open to discussing new projects, creative ideas
+                or opportunities to be part of your visions.
               </p>
-              <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
-                <a
-                  href={`mailto:${t.contact.email}`}
-                  className="flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-base font-semibold text-white transition-all hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/50"
-                >
-                  <FaEnvelope className="h-5 w-5" />
-                  {t.contact.email}
-                </a>
-                <a
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <motion.a
                   href="https://github.com/medchakkir"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 rounded-lg border border-blue-300 bg-white px-6 py-3 text-base font-semibold text-blue-900 transition-all hover:bg-blue-50 hover:border-blue-400"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.1 }}
+                  whileHover={{ scale: 1.02, y: -4 }}
+                  className="flex flex-col items-center gap-4 rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-lg hover:border-gray-900 hover:bg-gray-50"
                 >
-                  <FaGithub className="h-5 w-5" />
-                  GitHub
-                </a>
-                <a
+                  <FaGithub className="h-8 w-8 text-gray-900" />
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    GitHub
+                  </h3>
+                  <p className="text-sm text-gray-600 text-center">
+                    Check out my code
+                  </p>
+                </motion.a>
+                <motion.a
+                  href="mailto:medchakkir@gmail.com"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.2 }}
+                  whileHover={{ scale: 1.02, y: -4 }}
+                  className="flex flex-col items-center gap-4 rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-lg hover:border-red-500 hover:bg-red-50"
+                >
+                  <FaEnvelope className="h-8 w-8 text-gray-900" />
+                  <h3 className="text-lg font-semibold text-gray-900">Email</h3>
+                  <p className="text-sm text-gray-600 text-center">
+                    Send me a message
+                  </p>
+                </motion.a>
+                <motion.a
                   href="https://linkedin.com/in/medchakkir"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 rounded-lg border border-blue-300 bg-white px-6 py-3 text-base font-semibold text-blue-900 transition-all hover:bg-blue-50 hover:border-blue-400"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.3 }}
+                  whileHover={{ scale: 1.02, y: -4 }}
+                  className="flex flex-col items-center gap-4 rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-lg hover:border-blue-500 hover:bg-blue-50"
                 >
-                  <FaLinkedin className="h-5 w-5" />
-                  LinkedIn
-                </a>
+                  <FaLinkedin className="h-8 w-8 text-gray-900" />
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    LinkedIn
+                  </h3>
+                  <p className="text-sm text-gray-600 text-center">
+                    Connect professionally
+                  </p>
+                </motion.a>
               </div>
             </motion.div>
           </Container>

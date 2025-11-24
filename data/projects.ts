@@ -4,6 +4,7 @@ export interface Project {
   description: string;
   tags: string[];
   github: string;
+  demo?: string;
   image?: string;
   featured?: boolean;
 }
@@ -16,6 +17,7 @@ export const projects: Project[] = [
       'A dues-tracking and reporting platform built with modern full-stack tooling.',
     tags: ['Next.js', 'Prisma', 'PostgreSQL', 'Tailwind', 'Node.js'],
     github: 'https://github.com/medchakkir/CertiCarte',
+    demo: 'https://certicarte.laravel.cloud',
     image: '/certicarte.jpg',
     featured: true,
   },
