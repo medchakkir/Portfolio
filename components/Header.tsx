@@ -13,12 +13,70 @@ export function Header() {
     href: string
   ) => {
     e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setActiveSection(href);
-      setMobileMenuOpen(false);
+    const sectionId = href.replace('#', '');
+    
+    // Map section to the divider that precedes it
+    // Divider's data-section-id indicates which section it follows
+    const sectionToDividerMap: Record<string, string | null> = {
+      'about': null, // Divider after Hero (no id) precedes About
+      'projects': 'about', // Divider after About precedes Projects
+      'skills': 'projects', // Divider after Projects precedes Skills
+      'contact': 'skills', // Divider after Skills precedes Contact
+    };
+    
+    const previousSectionId = sectionToDividerMap[sectionId];
+    let divider: Element | null = null;
+    
+    if (previousSectionId === null) {
+      // Find the first divider (after Hero section)
+      const allMarkers = document.querySelectorAll('.scroll-marker');
+      if (allMarkers.length > 0) {
+        // Find the one with no data-section-id or empty data-section-id
+        allMarkers.forEach((marker) => {
+          const markerSectionId = marker.getAttribute('data-section-id');
+          if (!markerSectionId && !divider) {
+            divider = marker;
+          }
+        });
+        // If no divider found with no id, use the first one
+        if (!divider && allMarkers[0]) {
+          divider = allMarkers[0];
+        }
+      }
+    } else {
+      // Find divider with data-section-id matching the previous section
+      const allMarkers = document.querySelectorAll('.scroll-marker');
+      allMarkers.forEach((marker) => {
+        const markerSectionId = marker.getAttribute('data-section-id');
+        if (markerSectionId === previousSectionId) {
+          divider = marker;
+        }
+      });
     }
+    
+    const headerHeight = 64; // h-16 = 64px
+    
+    if (divider) {
+      // Scroll to the divider (section separator) accounting for header height
+      const dividerPosition = divider.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: dividerPosition - headerHeight,
+        behavior: 'smooth',
+      });
+    } else {
+      // Fallback: scroll to the section itself
+      const section = document.querySelector(href);
+      if (section) {
+        const sectionPosition = section.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: sectionPosition - headerHeight,
+          behavior: 'smooth',
+        });
+      }
+    }
+    
+    setActiveSection(href);
+    setMobileMenuOpen(false);
   };
 
   const navLinks = [
