@@ -31,17 +31,17 @@ export function AchievementCard({
   const CardContent = (
     <>
       <div className="mb-4 flex items-center gap-3">
-        <IconComponent className="h-6 w-6 text-gray-600" />
+        <IconComponent className="h-6 w-6 text-gray-600 dark:text-gray-400" />
         {date && (
-          <span className="rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-700">
+          <span className="rounded-full bg-gray-100 dark:bg-gray-700 px-2.5 py-1 text-xs font-medium text-gray-700 dark:text-gray-300">
             {date}
           </span>
         )}
       </div>
-      <h3 className="mb-2 text-lg font-semibold text-gray-900">{title}</h3>
-      <p className="mb-4 text-gray-700">{description}</p>
+      <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">{title}</h3>
+      <p className="mb-4 text-gray-700 dark:text-gray-300">{description}</p>
       {verificationUrl && (
-        <span className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">
+        <span className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition-colors">
           View Certificate →
         </span>
       )}
@@ -49,7 +49,7 @@ export function AchievementCard({
   );
 
   const cardClasses =
-    'h-full rounded-lg border border-gray-200 bg-white/90 backdrop-blur-sm p-6 shadow-sm hover:shadow-lg hover:shadow-gray-500/20 transition-all duration-300';
+    'h-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm p-6 shadow-sm hover:shadow-lg hover:shadow-gray-500/20 dark:hover:shadow-gray-700/20 transition-all duration-300';
 
   return (
     <motion.div

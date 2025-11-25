@@ -38,12 +38,12 @@ export function ProjectCard({
       className="h-full"
     >
       <motion.div
-        className="group h-full flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white/90 backdrop-blur-sm shadow-md transition-all duration-300 ease-out hover:border-gray-400 hover:shadow-2xl hover:shadow-gray-500/30"
+        className="group h-full flex flex-col overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-md transition-all duration-300 ease-out hover:border-gray-400 dark:hover:border-gray-600 hover:shadow-2xl hover:shadow-gray-500/30 dark:hover:shadow-gray-700/30"
         whileHover={{ y: -4, scale: 1.02 }}
         transition={{ duration: 0.3, ease: 'easeOut' }}
       >
         {image && (
-          <div className="relative aspect-video w-full overflow-hidden bg-gray-50">
+          <div className="relative aspect-video w-full overflow-hidden bg-gray-50 dark:bg-gray-700">
             <div className="relative h-full w-full">
               <Image src={image} alt={title} fill className="object-cover" />
             </div>
@@ -52,11 +52,11 @@ export function ProjectCard({
         )}
 
         <div className="flex flex-1 flex-col p-6">
-          <h3 className="mb-2 text-xl font-semibold text-gray-900 transition-colors duration-300 group-hover:text-gray-600">
+          <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-300 group-hover:text-gray-600 dark:group-hover:text-gray-300">
             {title}
           </h3>
 
-          <p className="mb-4 flex-1 text-gray-700 line-clamp-3">
+          <p className="mb-4 flex-1 text-gray-700 dark:text-gray-300 line-clamp-3">
             {description}
           </p>
 
@@ -64,7 +64,7 @@ export function ProjectCard({
             {tags.map((item) => (
               <motion.span
                 key={item}
-                className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700 transition-all duration-300 group-hover:bg-gray-200 group-hover:text-gray-800"
+                className="rounded-full bg-gray-100 dark:bg-gray-700 px-3 py-1 text-xs font-medium text-gray-700 dark:text-gray-300 transition-all duration-300 group-hover:bg-gray-200 dark:group-hover:bg-gray-600 group-hover:text-gray-800 dark:group-hover:text-gray-200"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
               >
@@ -78,7 +78,7 @@ export function ProjectCard({
               href={github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-gray-700 px-4 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-gray-600 hover:shadow-lg hover:shadow-gray-700/50 w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-gray-700 dark:bg-gray-600 px-4 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-gray-600 dark:hover:bg-gray-500 hover:shadow-lg hover:shadow-gray-700/50 dark:hover:shadow-gray-600/50 w-full sm:w-auto"
             >
               <FaGithub className="h-5 w-5 transition-transform duration-300 group-hover:rotate-12" />
               <span>View Code</span>
@@ -88,7 +88,7 @@ export function ProjectCard({
                 href={demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-gray-900 px-4 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/50 w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-gray-900 dark:bg-gray-700 px-4 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-gray-800 dark:hover:bg-gray-600 hover:shadow-lg hover:shadow-gray-900/50 dark:hover:shadow-gray-700/50 w-full sm:w-auto"
               >
                 <VscGlobe className="h-5 w-5 transition-transform duration-300 group-hover:rotate-12" />
                 <span>Live Demo</span>
