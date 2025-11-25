@@ -82,15 +82,18 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="flex flex-wrap gap-4"
             >
-              <a
+              <motion.a
                 href="/resume.pdf"
                 download
-                className="group inline-flex items-center gap-2 rounded-lg bg-gray-900 dark:bg-gray-100 px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold text-white dark:text-gray-900 transition-all hover:bg-gray-800 dark:hover:bg-gray-200 hover:shadow-lg hover:shadow-gray-900/50 dark:hover:shadow-gray-100/50 hover:scale-105"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
+                className="group inline-flex items-center gap-2 rounded-lg bg-gray-900 dark:bg-gray-100 px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold text-white dark:text-gray-900 transition-all duration-300 hover:bg-gray-800 dark:hover:bg-gray-200 hover:shadow-lg hover:shadow-gray-900/50 dark:hover:shadow-gray-100/50"
               >
-                <FaDownload className="h-5 w-5 transition-transform group-hover:translate-y-1" />
+                <FaDownload className="h-5 w-5 transition-transform duration-300 group-hover:translate-y-1" />
                 <span>Download Resume</span>
-              </a>
-              <a
+              </motion.a>
+              <motion.a
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
@@ -102,11 +105,14 @@ export function HeroSection() {
                     });
                   }
                 }}
-                className="group inline-flex items-center gap-2 rounded-lg border-2 border-gray-900 dark:border-gray-100 bg-transparent px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 transition-all hover:bg-gray-900 dark:hover:bg-gray-100 hover:text-white dark:hover:text-gray-900 hover:scale-105"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
+                className="group inline-flex items-center gap-2 rounded-lg border-2 border-gray-900 dark:border-gray-100 bg-transparent px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 transition-all duration-300 hover:bg-gray-900 dark:hover:bg-gray-100 hover:text-white dark:hover:text-gray-900"
               >
                 <span>Get In Touch</span>
-                <FaArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </a>
+                <FaArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+              </motion.a>
             </motion.div>
           </motion.div>
 

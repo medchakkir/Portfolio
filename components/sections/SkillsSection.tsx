@@ -31,8 +31,14 @@ export function SkillsSection() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: categoryIndex * 0.1 }}
                 whileHover={{ scale: 1.02, y: -4 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ 
+                  opacity: { duration: 0.4, delay: categoryIndex * 0.1 },
+                  y: { duration: 0.4, delay: categoryIndex * 0.1 },
+                  scale: { duration: 0.2, ease: 'easeOut' },
+                  default: { duration: 0.2, ease: 'easeOut' }
+                }}
                 className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm p-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-gray-500/20 dark:hover:shadow-gray-700/20"
               >
                 <div className="mb-4 flex items-center gap-3">

@@ -35,8 +35,14 @@ export function ContactSection() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.1 }}
               whileHover={{ scale: 1.02, y: -4 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ 
+                opacity: { duration: 0.4, delay: 0.1 },
+                y: { duration: 0.4, delay: 0.1 },
+                scale: { duration: 0.2, ease: 'easeOut' },
+                default: { duration: 0.2, ease: 'easeOut' }
+              }}
               className="flex flex-col items-center gap-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm transition-all duration-300 hover:shadow-lg hover:border-gray-900 dark:hover:border-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700"
             >
               <FaGithub className="h-8 w-8 text-gray-900 dark:text-gray-100" />
@@ -52,8 +58,14 @@ export function ContactSection() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.2 }}
               whileHover={{ scale: 1.02, y: -4 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ 
+                opacity: { duration: 0.4, delay: 0.2 },
+                y: { duration: 0.4, delay: 0.2 },
+                scale: { duration: 0.2, ease: 'easeOut' },
+                default: { duration: 0.2, ease: 'easeOut' }
+              }}
               className="flex flex-col items-center gap-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm transition-all duration-300 hover:shadow-lg hover:border-red-500 dark:hover:border-red-400 hover:bg-red-50 dark:hover:bg-red-900/20"
             >
               <FaEnvelope className="h-8 w-8 text-gray-900 dark:text-gray-100" />
@@ -71,8 +83,14 @@ export function ContactSection() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.3 }}
               whileHover={{ scale: 1.02, y: -4 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ 
+                opacity: { duration: 0.4, delay: 0.3 },
+                y: { duration: 0.4, delay: 0.3 },
+                scale: { duration: 0.2, ease: 'easeOut' },
+                default: { duration: 0.2, ease: 'easeOut' }
+              }}
               className="flex flex-col items-center gap-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm transition-all duration-300 hover:shadow-lg hover:border-blue-500 dark:hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20"
             >
               <FaLinkedin className="h-8 w-8 text-gray-900 dark:text-gray-100" />
