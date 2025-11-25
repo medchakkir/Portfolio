@@ -297,7 +297,7 @@ export default function Home() {
                   </p>
                 </motion.a>
                 <motion.a
-                  href="mailto:medchakkir@gmail.com"
+                  href="mailto:demahomali01@gmail.com"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}

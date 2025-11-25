@@ -1,7 +1,6 @@
-"use client";
+'use client';
 
 export function Footer() {
-
   return (
     <footer className="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
       <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
@@ -27,7 +26,7 @@ export function Footer() {
               LinkedIn
             </a>
             <a
-              href="mailto:medchakkir@gmail.com"
+              href="mailto:demahomali01@gmail.com"
               className="text-sm text-gray-900/70 dark:text-gray-300/70 transition-colors hover:text-gray-600 dark:hover:text-gray-200"
             >
               Email
@@ -38,4 +37,3 @@ export function Footer() {
     </footer>
   );
 }
-
