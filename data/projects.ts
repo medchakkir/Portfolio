@@ -6,7 +6,6 @@ export interface Project {
   github: string;
   demo?: string;
   image?: string;
-  featured?: boolean;
 }
 
 export const projects: Project[] = [
@@ -15,30 +14,26 @@ export const projects: Project[] = [
     title: 'CertiCarte',
     description:
       'A dues-tracking and reporting platform built with modern full-stack tooling.',
-    tags: ['Next.js', 'Prisma', 'PostgreSQL', 'Tailwind', 'Node.js'],
+    tags: ['Laravel', 'PHP', 'MySQL', 'Tailwind'],
     github: 'https://github.com/medchakkir/CertiCarte',
     demo: 'https://certicarte.laravel.cloud',
-    image: '/certicarte.jpg',
-    featured: true,
   },
   {
     slug: 'nassibpay',
     title: 'NassibPay',
     description:
       'A modern payment processing platform with secure transaction handling and real-time analytics.',
-    tags: ['Next.js', 'TypeScript', 'Stripe API', 'PostgreSQL', 'Tailwind'],
-    github: 'https://github.com/medchakkir/CertiCarte',
-    image: '/certicarte.jpg',
-    featured: true,
+    tags: ['Next.js', 'TypeScript', 'PostgreSQL', 'Tailwind', 'ShadCN'],
+    github: 'https://github.com/medchakkir/NassibPay',
+    demo: 'https://nassibpay.vercel.app',
   },
   {
     slug: 'laragigs',
     title: 'LaraGigs',
     description:
       'A freelance job marketplace connecting clients with talented developers and designers.',
-    tags: ['Laravel', 'PHP', 'MySQL', 'Vue.js', 'Tailwind'],
-    github: 'https://github.com/medchakkir/CertiCarte',
-    image: '/certicarte.jpg',
-    featured: true,
+    tags: ['Laravel', 'PHP', 'MySQL', 'Tailwind'],
+    github: 'https://github.com/medchakkir/LaraGigs',
+    demo: 'https://laragigs.laravel.cloud',
   },
 ];

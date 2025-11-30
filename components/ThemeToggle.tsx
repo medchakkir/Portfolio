@@ -11,12 +11,12 @@ export function ThemeToggle() {
     // Fonction pour obtenir le thème initial
     const getInitialTheme = () => {
       if (typeof window === 'undefined') return false;
-      
+
       const stored = localStorage.getItem('theme');
       if (stored === 'dark' || stored === 'light') {
         return stored === 'dark';
       }
-      
+
       // Si pas de préférence stockée, utiliser la préférence système
       return window.matchMedia('(prefers-color-scheme: dark)').matches;
     };
@@ -37,10 +37,10 @@ export function ThemeToggle() {
   const toggleTheme = () => {
     const html = document.documentElement;
     const newIsDark = !isDark;
-    
+
     // Mettre à jour l'état
     setIsDark(newIsDark);
-    
+
     // Appliquer/retirer la classe dark
     if (newIsDark) {
       html.classList.add('dark');
@@ -71,12 +71,7 @@ export function ThemeToggle() {
       className="p-2 rounded-lg text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
-      {isDark ? (
-        <FaSun className="h-5 w-5" />
-      ) : (
-        <FaMoon className="h-5 w-5" />
-      )}
+      {isDark ? <FaSun className="h-5 w-5" /> : <FaMoon className="h-5 w-5" />}
     </button>
   );
 }
-

@@ -7,7 +7,7 @@ export function AnimatedShapes() {
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Animated Circles */}
       <motion.div
-        className="absolute top-20 right-20 w-72 h-72 rounded-full bg-gradient-to-br from-blue-400/20 to-purple-500/20 blur-3xl"
+        className="absolute top-20 right-20 w-72 h-72 rounded-full bg-linear-to-br from-blue-400/20 to-purple-500/20 blur-3xl"
         animate={{
           x: [0, 30, 0],
           y: [0, -30, 0],
@@ -20,7 +20,7 @@ export function AnimatedShapes() {
         }}
       />
       <motion.div
-        className="absolute bottom-20 right-40 w-96 h-96 rounded-full bg-gradient-to-br from-cyan-400/20 to-blue-500/20 blur-3xl"
+        className="absolute bottom-20 right-40 w-96 h-96 rounded-full bg-linear-to-br from-cyan-400/20 to-blue-500/20 blur-3xl"
         animate={{
           x: [0, -20, 0],
           y: [0, 20, 0],
@@ -32,7 +32,7 @@ export function AnimatedShapes() {
           ease: 'easeInOut',
         }}
       />
-      
+
       {/* Animated Geometric Shapes */}
       <motion.div
         className="absolute top-40 right-32 w-24 h-24 border-2 border-blue-400/30 dark:border-blue-500/30 rotate-45"
@@ -59,7 +59,7 @@ export function AnimatedShapes() {
         }}
       />
       <motion.div
-        className="absolute top-60 right-60 w-12 h-12 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 dark:from-cyan-500/30 dark:to-blue-600/30 rotate-12"
+        className="absolute top-60 right-60 w-12 h-12 bg-linear-to-br from-cyan-400/20 to-blue-500/20 dark:from-cyan-500/30 dark:to-blue-600/30 rotate-12"
         animate={{
           rotate: [12, 372, 12],
           x: [0, 20, 0],
@@ -71,7 +71,7 @@ export function AnimatedShapes() {
           ease: 'easeInOut',
         }}
       />
-      
+
       {/* Grid Pattern Overlay */}
       <div className="absolute inset-0 opacity-30 dark:opacity-20">
         <div
@@ -88,4 +88,3 @@ export function AnimatedShapes() {
     </div>
   );
 }
-

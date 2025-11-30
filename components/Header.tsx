@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { ThemeToggle } from './ThemeToggle';
 
@@ -8,43 +8,83 @@ export function Header() {
   const [activeSection, setActiveSection] = useState('');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  useEffect(() => {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('header a[href^="#"]');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          if (id) {
+            setActiveSection(`#${id}`);
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    // Also check on scroll for hero section (which might be at top)
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      if (scrollPosition < 100) {
+        setActiveSection('');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string
   ) => {
     e.preventDefault();
     const sectionId = href.replace('#', '');
-    
-    // Map section to the divider that precedes it
-    // Divider's data-section-id indicates which section it follows
+
     const sectionToDividerMap: Record<string, string | null> = {
-      'about': null, // Divider after Hero (no id) precedes About
-      'projects': 'about', // Divider after About precedes Projects
-      'skills': 'projects', // Divider after Projects precedes Skills
-      'contact': 'skills', // Divider after Skills precedes Contact
+      about: null,
+      projects: 'about',
+      skills: 'projects',
+      contact: 'skills',
     };
-    
+
     const previousSectionId = sectionToDividerMap[sectionId];
     let divider: Element | null = null;
-    
+
     if (previousSectionId === null) {
-      // Find the first divider (after Hero section)
       const allMarkers = document.querySelectorAll('.scroll-marker');
       if (allMarkers.length > 0) {
-        // Find the one with no data-section-id or empty data-section-id
         allMarkers.forEach((marker) => {
           const markerSectionId = marker.getAttribute('data-section-id');
           if (!markerSectionId && !divider) {
             divider = marker;
           }
         });
-        // If no divider found with no id, use the first one
         if (!divider && allMarkers[0]) {
           divider = allMarkers[0];
         }
       }
     } else {
-      // Find divider with data-section-id matching the previous section
       const allMarkers = document.querySelectorAll('.scroll-marker');
       allMarkers.forEach((marker) => {
         const markerSectionId = marker.getAttribute('data-section-id');
@@ -53,28 +93,28 @@ export function Header() {
         }
       });
     }
-    
-    const headerHeight = 64; // h-16 = 64px
-    
+
+    const headerHeight = 64;
+
     if (divider) {
-      // Scroll to the divider (section separator) accounting for header height
-      const dividerPosition = divider.getBoundingClientRect().top + window.scrollY;
+      const dividerPosition =
+        divider.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
         top: dividerPosition - headerHeight,
         behavior: 'smooth',
       });
     } else {
-      // Fallback: scroll to the section itself
       const section = document.querySelector(href);
       if (section) {
-        const sectionPosition = section.getBoundingClientRect().top + window.scrollY;
+        const sectionPosition =
+          section.getBoundingClientRect().top + window.scrollY;
         window.scrollTo({
           top: sectionPosition - headerHeight,
           behavior: 'smooth',
         });
       }
     }
-    
+
     setActiveSection(href);
     setMobileMenuOpen(false);
   };
@@ -109,13 +149,16 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className={`text-sm font-medium transition-colors ${
+                className={`text-sm font-medium transition-colors relative ${
                   activeSection === link.href
-                    ? 'text-gray-600 dark:text-gray-400'
-                    : 'text-gray-900/70 dark:text-gray-300/70 hover:text-gray-600 dark:hover:text-gray-400'
+                    ? 'text-gray-900 dark:text-gray-100 font-semibold'
+                    : 'text-gray-900/70 dark:text-gray-300/70 hover:text-gray-900 dark:hover:text-gray-100'
                 }`}
               >
                 {link.label}
+                {activeSection === link.href && (
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400 rounded-full" />
+                )}
               </a>
             ))}
             <ThemeToggle />
@@ -150,8 +193,8 @@ export function Header() {
                   onClick={(e) => handleNavClick(e, link.href)}
                   className={`px-4 py-3 text-base font-medium transition-colors ${
                     activeSection === link.href
-                      ? 'text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-800'
-                      : 'text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-600 dark:hover:text-gray-300'
+                      ? 'text-gray-900 dark:text-gray-100 bg-gray-100 dark:bg-gray-800 font-semibold border-l-4 border-blue-600 dark:border-blue-400'
+                      : 'text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800'
                   }`}
                 >
                   {link.label}

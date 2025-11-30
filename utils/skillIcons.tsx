@@ -1,95 +1,23 @@
 import { IconType } from 'react-icons';
-import {
-  FaCode,
-  FaDatabase,
-  FaTools,
-  FaBookOpen,
-  FaReact,
-  FaJs,
-  FaHtml5,
-  FaCss3Alt,
-  FaNode,
-  FaPython,
-  FaGitAlt,
-  FaGithub,
-  FaDocker,
-  FaLinux,
-  FaLaravel,
-} from 'react-icons/fa';
-import {
-  SiTypescript,
-  SiNextdotjs,
-  SiTailwindcss,
-  SiExpress,
-  SiPhp,
-  SiPrisma,
-  SiPostgresql,
-  SiMysql,
-  SiMongodb,
-  SiPandas,
-  SiNumpy,
-  SiScikitlearn,
-  SiJira,
-} from 'react-icons/si';
-import { VscGlobe } from 'react-icons/vsc';
-import { GiBrain } from 'react-icons/gi';
+import { FaLaptopCode, FaServer, FaTools, FaCode } from 'react-icons/fa';
 
 // Category icons mapping
 export const categoryIcons: Record<string, IconType> = {
-  'Web Development': VscGlobe,
-  'Backend & Databases': FaDatabase,
-  'AI & Data Science Tools': GiBrain,
+  Frontend: FaLaptopCode,
+  'Backend & Databases': FaServer,
   'Dev Tools': FaTools,
-  'Currently Learning': FaBookOpen,
 };
 
-// Skill icons mapping
-export const skillIcons: Record<string, IconType> = {
-  // Web Development
-  JavaScript: FaJs,
-  TypeScript: SiTypescript,
-  React: FaReact,
-  'Next.js': SiNextdotjs,
-  HTML: FaHtml5,
-  CSS: FaCss3Alt,
-  Tailwind: SiTailwindcss,
-  'Node.js': FaNode,
-  Express: SiExpress,
-
-  // Backend & Databases
-  Laravel: FaLaravel,
-  PHP: SiPhp,
-  Prisma: SiPrisma,
-  PostgreSQL: SiPostgresql,
-  MySQL: SiMysql,
-  MongoDB: SiMongodb,
-
-  // AI & Data Science
-  Python: FaPython,
-  Pandas: SiPandas,
-  NumPy: SiNumpy,
-  'Scikit-Learn': SiScikitlearn,
-
-  // Dev Tools
-  Git: FaGitAlt,
-  GitHub: FaGithub,
-  Docker: FaDocker,
-  Linux: FaLinux,
-  'Agile (Jira)': SiJira,
-  'REST APIs': FaCode,
-
-  // Currently Learning
-  'Machine Learning': GiBrain,
-  'Data Science foundations': GiBrain,
-  Spanish: FaBookOpen,
+export const categoryGradients: Record<string, string> = {
+  Frontend: 'from-slate-900 via-slate-800 to-slate-700',
+  'Backend & Databases': 'from-emerald-600 via-emerald-500 to-emerald-400',
+  'Dev Tools': 'from-indigo-600 via-slate-800 to-slate-700',
 };
 
-// Get icon for a skill, or return a default icon
-export const getSkillIcon = (skill: string): IconType => {
-  return skillIcons[skill] || FaCode;
-};
-
-// Get icon for a category
 export const getCategoryIcon = (category: string): IconType => {
   return categoryIcons[category] || FaCode;
+};
+
+export const getCategoryGradient = (category: string): string => {
+  return categoryGradients[category] || 'from-gray-500 to-slate-700';
 };
