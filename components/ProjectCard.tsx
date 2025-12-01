@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FaGithub, FaProjectDiagram } from 'react-icons/fa'
 import { VscGlobe } from 'react-icons/vsc'
+import { useTranslations } from 'next-intl'
 
 interface ProjectCardProps {
     title: string
@@ -25,6 +26,7 @@ export function ProjectCard({
     image,
     index = 0,
 }: ProjectCardProps) {
+    const t = useTranslations('projects')
     const hasImage = Boolean(image)
     return (
         <motion.div
@@ -89,7 +91,7 @@ export function ProjectCard({
                             className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-gray-900 px-4 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-gray-700 sm:w-auto dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-300 dark:hover:shadow-gray-100/50"
                         >
                             <FaGithub className="h-5 w-5 transition-transform duration-300" />
-                            <span>View Code</span>
+                            <span>{t('viewCode')}</span>
                         </Link>
                         {demo && (
                             <Link
@@ -99,7 +101,7 @@ export function ProjectCard({
                                 className="inline-flex w-full items-center justify-center gap-2 rounded-lg border-2 border-gray-900 bg-transparent px-4 py-2.5 text-sm font-semibold text-gray-900 transition-all duration-300 hover:bg-gray-900 hover:text-white sm:w-auto dark:border-gray-100 dark:text-gray-100 dark:hover:bg-gray-100 dark:hover:text-gray-900"
                             >
                                 <VscGlobe className="h-5 w-5 transition-transform duration-300" />
-                                <span>Live Demo</span>
+                                <span>{t('liveDemo')}</span>
                             </Link>
                         )}
                     </div>

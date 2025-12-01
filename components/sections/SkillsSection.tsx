@@ -6,8 +6,11 @@ import { Section } from '@/components/Section'
 import { SkillBadge } from '@/components/SkillBadge'
 import { skills } from '@/data/skills'
 import { getCategoryIcon, getCategoryGradient } from '@/utils/skillIcons'
+import { useTranslations } from 'next-intl'
 
 export function SkillsSection() {
+    const t = useTranslations('skills')
+
     return (
         <Section
             id="skills"
@@ -22,7 +25,7 @@ export function SkillsSection() {
                     className="mb-10 text-center"
                 >
                     <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 sm:mb-6 sm:text-5xl lg:text-6xl dark:text-gray-100">
-                        Skills & Technologies
+                        {t('title')}
                     </h2>
                 </motion.div>
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -60,7 +63,7 @@ export function SkillsSection() {
                                         </span>
                                         <div>
                                             <p className="text-xs font-semibold tracking-[0.4em] text-gray-500 uppercase dark:text-gray-400">
-                                                Category
+                                                {t('category')}
                                             </p>
                                             <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                                                 {category.category}

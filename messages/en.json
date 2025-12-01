@@ -1,0 +1,63 @@
+{
+    "nav": {
+        "about": "About",
+        "projects": "Projects",
+        "skills": "Skills",
+        "contact": "Contact"
+    },
+    "hero": {
+        "greeting": "👋 Hi, I'm",
+        "title": "Full-Stack Developer & AI Enthusiast",
+        "description": "Full-stack developer with a growing focus on AI and Data Science. I design efficient interfaces, reliable backend systems, and explore machine-learning techniques to push digital products forward.",
+        "downloadResume": "Download Resume",
+        "getInTouch": "Get In Touch"
+    },
+    "about": {
+        "title": "About Me",
+        "paragraph1": "Based in Djibouti, I'm Mohamed Ali Youssouf, commonly known as Mohamed Chakkir. I earned my Computer Science degree in 2025, and my passion for web development began long before that, growing from early explorations in high school into a focus on modern full-stack development with React/Next.js and Express.js or Laravel.",
+        "paragraph2": "I'm currently expanding into AI, machine learning, and cybersecurity as I prepare for postgraduate studies, and I bring strong multilingual communication skills in French, English, Arabic, and Somali as my native language."
+    },
+    "projects": {
+        "title": "Featured Projects",
+        "viewCode": "View Code",
+        "liveDemo": "Live Demo",
+        "certicarte": {
+            "title": "CertiCarte",
+            "description": "A dues-tracking and reporting platform built with modern full-stack tooling."
+        },
+        "nassibpay": {
+            "title": "NassibPay",
+            "description": "A modern payment processing platform with secure transaction handling and real-time analytics."
+        },
+        "laragigs": {
+            "title": "LaraGigs",
+            "description": "A freelance job marketplace connecting clients with talented developers and designers."
+        }
+    },
+    "skills": {
+        "title": "Skills & Technologies",
+        "category": "Category"
+    },
+    "contact": {
+        "title": "Let's stay in touch!",
+        "description": "I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.",
+        "github": {
+            "title": "GitHub",
+            "description": "Check out my code"
+        },
+        "email": {
+            "title": "Email",
+            "description": "Send me a message"
+        },
+        "linkedin": {
+            "title": "LinkedIn",
+            "description": "Connect professionally"
+        }
+    },
+    "footer": {
+        "copyright": "© {year} Mohamed Chakkir. All rights reserved.",
+        "github": "GitHub",
+        "email": "Email",
+        "linkedin": "LinkedIn"
+    }
+}

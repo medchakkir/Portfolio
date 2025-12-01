@@ -3,8 +3,11 @@
 import { motion } from 'framer-motion'
 import { Container } from '@/components/Container'
 import { Section } from '@/components/Section'
+import { useTranslations } from 'next-intl'
 
 export function AboutSection() {
+    const t = useTranslations('about')
+
     return (
         <Section
             id="about"
@@ -19,24 +22,14 @@ export function AboutSection() {
                     className="mx-auto max-w-3xl text-center"
                 >
                     <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 sm:mb-6 sm:text-5xl lg:text-6xl dark:text-gray-100">
-                        About Me
+                        {t('title')}
                     </h2>
                     <div className="space-y-6 text-left">
                         <p className="text-lg leading-relaxed text-gray-700 sm:text-xl dark:text-gray-300">
-                            Based in Djibouti, I&apos;m Mohamed Ali Youssouf,
-                            commonly known as Mohamed Chakkir. I earned my
-                            Computer Science degree in 2025, and my passion for
-                            web development began long before that, growing from
-                            early explorations in high school into a focus on
-                            modern full-stack development with React/Next.js and
-                            Express.js or Laravel.
+                            {t('paragraph1')}
                         </p>
                         <p className="text-lg leading-relaxed text-gray-700 sm:text-xl dark:text-gray-300">
-                            I&apos;m currently expanding into AI, machine
-                            learning, and cybersecurity as I prepare for
-                            postgraduate studies, and I bring strong
-                            multilingual communication skills in French,
-                            English, Arabic, and Somali as my native language.
+                            {t('paragraph2')}
                         </p>
                     </div>
                 </motion.div>

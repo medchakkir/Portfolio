@@ -22,6 +22,7 @@ export function ThemeToggle() {
         }
 
         const initialDark = getInitialTheme()
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setIsDark(initialDark)
         setMounted(true)
 

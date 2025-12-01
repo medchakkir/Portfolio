@@ -4,8 +4,11 @@ import { motion } from 'framer-motion'
 import { Container } from '@/components/Container'
 import { Section } from '@/components/Section'
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
+import { useTranslations } from 'next-intl'
 
 export function ContactSection() {
+    const t = useTranslations('contact')
+
     return (
         <Section
             id="contact"
@@ -21,12 +24,10 @@ export function ContactSection() {
                     className="mx-auto max-w-4xl text-center"
                 >
                     <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 sm:mb-6 sm:text-5xl lg:text-6xl dark:text-gray-100">
-                        Let&apos;s stay in touch!
+                        {t('title')}
                     </h2>
                     <p className="mb-8 text-lg leading-relaxed text-gray-700 sm:mb-12 sm:text-xl dark:text-gray-300">
-                        I&apos;m always open to discussing new projects,
-                        creative ideas or opportunities to be part of your
-                        visions.
+                        {t('description')}
                     </p>
                     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                         <motion.a
@@ -48,10 +49,10 @@ export function ContactSection() {
                         >
                             <FaGithub className="h-8 w-8 text-gray-900 transition-colors duration-300 group-hover:text-gray-800 dark:text-gray-100 dark:group-hover:text-gray-200" />
                             <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                                GitHub
+                                {t('github.title')}
                             </h3>
                             <p className="text-center text-sm text-gray-600 dark:text-gray-400">
-                                Check out my code
+                                {t('github.description')}
                             </p>
                         </motion.a>
                         <motion.a
@@ -71,10 +72,10 @@ export function ContactSection() {
                         >
                             <FaEnvelope className="h-8 w-8 text-gray-900 transition-colors duration-300 group-hover:text-red-600 dark:text-gray-100 dark:group-hover:text-red-400" />
                             <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                                Email
+                                {t('email.title')}
                             </h3>
                             <p className="text-center text-sm text-gray-600 dark:text-gray-400">
-                                Send me a message
+                                {t('email.description')}
                             </p>
                         </motion.a>
                         <motion.a
@@ -96,10 +97,10 @@ export function ContactSection() {
                         >
                             <FaLinkedin className="h-8 w-8 text-gray-900 transition-colors duration-300 group-hover:text-blue-600 dark:text-gray-100 dark:group-hover:text-blue-400" />
                             <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                                LinkedIn
+                                {t('linkedin.title')}
                             </h3>
                             <p className="text-center text-sm text-gray-600 dark:text-gray-400">
-                                Connect professionally
+                                {t('linkedin.description')}
                             </p>
                         </motion.a>
                     </div>

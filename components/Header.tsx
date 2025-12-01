@@ -3,8 +3,11 @@
 import { useState, useEffect } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import { ThemeToggle } from './ThemeToggle'
+import { LanguageToggle } from './LanguageToggle'
+import { useTranslations } from 'next-intl'
 
 export function Header() {
+    const t = useTranslations('nav')
     const [activeSection, setActiveSection] = useState('')
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
@@ -120,10 +123,10 @@ export function Header() {
     }
 
     const navLinks = [
-        { href: '#about', label: 'About' },
-        { href: '#projects', label: 'Projects' },
-        { href: '#skills', label: 'Skills' },
-        { href: '#contact', label: 'Contact' },
+        { href: '#about', label: t('about') },
+        { href: '#projects', label: t('projects') },
+        { href: '#skills', label: t('skills') },
+        { href: '#contact', label: t('contact') },
     ]
 
     return (
@@ -161,11 +164,13 @@ export function Header() {
                                 )}
                             </a>
                         ))}
+                        <LanguageToggle />
                         <ThemeToggle />
                     </div>
 
                     {/* Mobile Menu Button */}
                     <div className="flex items-center gap-2 sm:hidden">
+                        <LanguageToggle />
                         <ThemeToggle />
                         <button
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

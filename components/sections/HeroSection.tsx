@@ -5,8 +5,11 @@ import { Container } from '@/components/Container'
 import { Section } from '@/components/Section'
 import { AnimatedShapes } from '@/components/AnimatedShapes'
 import { FaDownload, FaArrowRight } from 'react-icons/fa'
+import { useTranslations } from 'next-intl'
 
 export function HeroSection() {
+    const t = useTranslations('hero')
+
     return (
         <Section className="bg-pattern-grid relative overflow-hidden bg-linear-to-br from-gray-50 via-white to-blue-50/30 dark:from-gray-900 dark:via-gray-900 dark:to-blue-950/20">
             {/* Animated Shapes */}
@@ -28,7 +31,7 @@ export function HeroSection() {
                             className="mb-4"
                         >
                             <span className="text-2xl text-gray-700 sm:text-3xl dark:text-gray-300">
-                                👋 Hi, I&apos;m
+                                {t('greeting')}
                             </span>
                         </motion.div>
 
@@ -56,7 +59,7 @@ export function HeroSection() {
                             transition={{ duration: 0.6, delay: 0.5 }}
                             className="mb-4 text-xl font-semibold text-gray-700 sm:mb-6 sm:text-2xl md:text-3xl dark:text-gray-300"
                         >
-                            Full-Stack Developer & AI Enthusiast
+                            {t('title')}
                         </motion.p>
 
                         <motion.p
@@ -65,11 +68,7 @@ export function HeroSection() {
                             transition={{ duration: 0.6, delay: 0.6 }}
                             className="mb-8 max-w-2xl text-base leading-7 text-gray-600 sm:mb-12 sm:text-lg sm:leading-8 lg:text-xl dark:text-gray-400"
                         >
-                            Full-stack developer with a growing focus on AI and
-                            Data Science. I design efficient interfaces,
-                            reliable backend systems, and explore
-                            machine-learning techniques to push digital products
-                            forward.
+                            {t('description')}
                         </motion.p>
 
                         <motion.div
@@ -87,7 +86,7 @@ export function HeroSection() {
                                 className="group inline-flex items-center gap-2 rounded-lg bg-gray-900 px-6 py-3 text-base font-semibold text-white transition-all duration-300 hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/50 sm:px-8 sm:py-4 sm:text-lg dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200 dark:hover:shadow-gray-100/50"
                             >
                                 <FaDownload className="h-5 w-5 transition-transform duration-300 group-hover:translate-y-1" />
-                                <span>Download Resume</span>
+                                <span>{t('downloadResume')}</span>
                             </motion.a>
                             <motion.a
                                 href="#contact"
@@ -107,7 +106,7 @@ export function HeroSection() {
                                 transition={{ duration: 0.2, ease: 'easeOut' }}
                                 className="group inline-flex items-center gap-2 rounded-lg border-2 border-gray-900 bg-transparent px-6 py-3 text-base font-semibold text-gray-900 transition-all duration-300 hover:bg-gray-900 hover:text-white sm:px-8 sm:py-4 sm:text-lg dark:border-gray-100 dark:text-gray-100 dark:hover:bg-gray-100 dark:hover:text-gray-900"
                             >
-                                <span>Get In Touch</span>
+                                <span>{t('getInTouch')}</span>
                                 <FaArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                             </motion.a>
                         </motion.div>

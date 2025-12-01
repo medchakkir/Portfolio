@@ -5,8 +5,11 @@ import { Container } from '@/components/Container'
 import { Section } from '@/components/Section'
 import { ProjectCard } from '@/components/ProjectCard'
 import { projects } from '@/data/projects'
+import { useTranslations } from 'next-intl'
 
 export function ProjectsSection() {
+    const t = useTranslations('projects')
+
     return (
         <Section
             id="projects"
@@ -21,7 +24,7 @@ export function ProjectsSection() {
                     className="mb-12 text-center"
                 >
                     <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 sm:mb-6 sm:text-5xl lg:text-6xl dark:text-gray-100">
-                        Featured Projects
+                        {t('title')}
                     </h2>
                 </motion.div>
                 <motion.div
@@ -34,8 +37,8 @@ export function ProjectsSection() {
                     {projects.map((project, index) => (
                         <ProjectCard
                             key={project.slug}
-                            title={project.title}
-                            description={project.description}
+                            title={t(`${project.slug}.title`)}
+                            description={t(`${project.slug}.description`)}
                             tags={project.tags}
                             github={project.github}
                             demo={project.demo}

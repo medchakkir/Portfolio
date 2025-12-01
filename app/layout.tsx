@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { NextIntlClientProvider } from 'next-intl'
+import { getLocale, getMessages } from 'next-intl/server'
+import { locales, type Locale, defaultLocale } from '@/i18n/config'
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -26,13 +29,28 @@ export const metadata: Metadata = {
     },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode
 }>) {
+    let locale: string
+    try {
+        locale = await getLocale()
+    } catch {
+        // Fallback to default locale if getLocale fails
+        locale = defaultLocale
+    }
+
+    // Validate locale and fallback to default if invalid
+    const validLocale: Locale = locales.includes(locale as Locale)
+        ? (locale as Locale)
+        : defaultLocale
+
+    const messages = await getMessages()
+
     return (
-        <html lang="en" suppressHydrationWarning>
+        <html lang={validLocale} suppressHydrationWarning>
             <head>
                 <script
                     dangerouslySetInnerHTML={{
@@ -56,7 +74,9 @@ export default function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} bg-white antialiased dark:bg-gray-900`}
             >
-                {children}
+                <NextIntlClientProvider messages={messages}>
+                    {children}
+                </NextIntlClientProvider>
                 <Analytics />
                 <SpeedInsights />
             </body>
