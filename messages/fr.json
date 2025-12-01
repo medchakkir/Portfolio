@@ -7,8 +7,8 @@
     },
     "hero": {
         "greeting": "👋 Salut, je suis",
-        "title": "Développeur Full-Stack & Passionné d'IA",
-        "description": "Développeur full-stack avec un intérêt croissant pour l'IA et la Science des Données. Je conçois des interfaces efficaces, des systèmes backend fiables, et j'explore des techniques d'apprentissage automatique pour faire progresser les produits numériques.",
+        "title": "Développeur Full-Stack",
+        "description": "Développeur full-stack explorant l'IA, l'apprentissage automatique et la cybersécurité pour construire des produits numériques plus intelligents et plus résilients.",
         "downloadResume": "Télécharger le CV",
         "getInTouch": "Me contacter"
     },
@@ -23,15 +23,15 @@
         "liveDemo": "Démo en direct",
         "certicarte": {
             "title": "CertiCarte",
-            "description": "Une plateforme de suivi et de reporting des cotisations construite avec des outils full-stack modernes."
+            "description": "Un système de gestion de certification qui facilite et automatise la génération des cartes d’identité étudiantes, des certificats étudiants et des listes de présence en classe."
         },
         "nassibpay": {
             "title": "NassibPay",
-            "description": "Une plateforme moderne de traitement des paiements avec gestion sécurisée des transactions et analyses en temps réel."
+            "description": "Une plateforme de gestion des cotisations qui simplifie la gestion des membres, le suivi des paiements, le reporting financier et la supervision administrative grâce à une interface web intuitive."
         },
         "laragigs": {
             "title": "LaraGigs",
-            "description": "Une marketplace de jobs freelance connectant les clients avec des développeurs et designers talentueux."
+            "description": "Une plateforme d’offres d’emploi pour les employeurs et les chercheurs d’emploi qui relie les talents aux opportunités grâce à une interface intuitive, offrant une recherche avancée, une gestion des offres d’emploi et une communication fluide."
         }
     },
     "skills": {

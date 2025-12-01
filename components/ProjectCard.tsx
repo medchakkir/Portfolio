@@ -66,7 +66,7 @@ export function ProjectCard({
                         {title}
                     </h3>
 
-                    <p className="mb-4 line-clamp-3 flex-1 text-gray-700 dark:text-gray-300">
+                    <p className="mb-4 flex-1 text-gray-700 dark:text-gray-300">
                         {description}
                     </p>
 

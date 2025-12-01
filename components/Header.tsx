@@ -145,8 +145,8 @@ export function Header() {
                         Mohamed Chakkir
                     </a>
 
-                    {/* Desktop Navigation */}
-                    <div className="hidden items-center gap-6 sm:flex">
+                    {/* Desktop Navigation - Centered */}
+                    <div className="hidden items-center gap-6 sm:flex sm:absolute sm:left-1/2 sm:-translate-x-1/2">
                         {navLinks.map((link) => (
                             <a
                                 key={link.href}
@@ -164,26 +164,32 @@ export function Header() {
                                 )}
                             </a>
                         ))}
-                        <LanguageToggle />
-                        <ThemeToggle />
                     </div>
 
-                    {/* Mobile Menu Button */}
-                    <div className="flex items-center gap-2 sm:hidden">
-                        <LanguageToggle />
-                        <ThemeToggle />
-                        <button
-                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                            className="p-2 text-gray-900 transition-colors hover:text-gray-600 dark:text-gray-100 dark:hover:text-gray-300"
-                            aria-label="Toggle menu"
-                            aria-expanded={mobileMenuOpen}
-                        >
-                            {mobileMenuOpen ? (
-                                <FaTimes className="h-6 w-6" />
-                            ) : (
-                                <FaBars className="h-6 w-6" />
-                            )}
-                        </button>
+                    {/* Right side controls */}
+                    <div className="flex items-center gap-2">
+                        <div className="hidden sm:flex sm:items-center sm:gap-2">
+                            <LanguageToggle />
+                            <ThemeToggle />
+                        </div>
+
+                        {/* Mobile Menu Button */}
+                        <div className="flex items-center gap-2 sm:hidden">
+                            <LanguageToggle />
+                            <ThemeToggle />
+                            <button
+                                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                                className="p-2 text-gray-900 transition-colors hover:text-gray-600 dark:text-gray-100 dark:hover:text-gray-300"
+                                aria-label="Toggle menu"
+                                aria-expanded={mobileMenuOpen}
+                            >
+                                {mobileMenuOpen ? (
+                                    <FaTimes className="h-6 w-6" />
+                                ) : (
+                                    <FaBars className="h-6 w-6" />
+                                )}
+                            </button>
+                        </div>
                     </div>
                 </nav>
 

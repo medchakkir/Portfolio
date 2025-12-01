@@ -20,11 +20,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
     title: 'Mohamed Chakkir | Full-Stack Developer',
     description:
-        'Full-Stack Developer exploring AI & Machine Learning. Building smart, scalable web experiences.',
+        'Full-stack developer crafting efficient, reliable, and innovative digital products.',
     openGraph: {
         title: 'Mohamed Chakkir | Full-Stack Developer',
         description:
-            'Full-Stack Developer exploring AI & Machine Learning. Building smart, scalable web experiences.',
+            'Full-stack developer crafting efficient, reliable, and innovative digital products.',
         type: 'website',
     },
 }
@@ -44,7 +44,7 @@ export default async function RootLayout({
     const messages = await getMessages()
 
     return (
-        <html lang={locale}>
+        <html lang={locale} suppressHydrationWarning>
             <head>
                 <script
                     dangerouslySetInnerHTML={{

@@ -7,8 +7,8 @@
     },
     "hero": {
         "greeting": "👋 Hi, I'm",
-        "title": "Full-Stack Developer & AI Enthusiast",
-        "description": "Full-stack developer with a growing focus on AI and Data Science. I design efficient interfaces, reliable backend systems, and explore machine-learning techniques to push digital products forward.",
+        "title": "Full-Stack Developer",
+        "description": "Full-stack developer exploring AI, machine learning, and cybersecurity to build smarter and more resilient digital products.",
         "downloadResume": "Download Resume",
         "getInTouch": "Get In Touch"
     },
@@ -23,15 +23,15 @@
         "liveDemo": "Live Demo",
         "certicarte": {
             "title": "CertiCarte",
-            "description": "A dues-tracking and reporting platform built with modern full-stack tooling."
+            "description": "A Certification Management System that facilitates and automates the generation of student ID cards, student certificates, and class attendance lists."
         },
         "nassibpay": {
             "title": "NassibPay",
-            "description": "A modern payment processing platform with secure transaction handling and real-time analytics."
+            "description": "A Dues Management System that streamlines member management, payment tracking, financial reporting, and administrative oversight through an intuitive web interface."
         },
         "laragigs": {
             "title": "LaraGigs",
-            "description": "A freelance job marketplace connecting clients with talented developers and designers."
+            "description": "A Job Listing Platform that connects talent with opportunities through an intuitive interface, offering advanced search, and seamless communication."
         }
     },
     "skills": {

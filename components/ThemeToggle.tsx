@@ -55,13 +55,9 @@ export function ThemeToggle() {
     if (!mounted) {
         // Rendu initial pour éviter le flash
         return (
-            <button
-                className="rounded-lg p-2 text-gray-900 transition-colors hover:bg-gray-100"
-                aria-label="Toggle theme"
-                disabled
-            >
-                <FaMoon className="h-5 w-5" />
-            </button>
+            <div className="relative inline-flex h-6 w-11 items-center rounded-full bg-gray-300 transition-colors">
+                <span className="inline-block h-4 w-4 translate-x-1 rounded-full bg-white transition-transform" />
+            </div>
         )
     }
 
@@ -69,14 +65,30 @@ export function ThemeToggle() {
         <button
             onClick={toggleTheme}
             type="button"
-            className="rounded-lg p-2 text-gray-900 transition-colors hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800"
+            className="relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none dark:focus:ring-offset-gray-800"
             aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+            role="switch"
+            aria-checked={isDark}
         >
-            {isDark ? (
-                <FaSun className="h-5 w-5" />
-            ) : (
-                <FaMoon className="h-5 w-5" />
-            )}
+            {/* Track */}
+            <span
+                className={`inline-block h-full w-full rounded-full transition-colors duration-300 ${
+                    isDark ? 'bg-blue-600' : 'bg-gray-300 dark:bg-gray-600'
+                }`}
+            />
+
+            {/* Thumb with icon */}
+            <span
+                className={`absolute flex h-5 w-5 items-center justify-center rounded-full bg-white shadow-md transition-transform duration-300 ${
+                    isDark ? 'translate-x-6' : 'translate-x-0.5'
+                }`}
+            >
+                {isDark ? (
+                    <FaMoon className="h-3 w-3 text-blue-600" />
+                ) : (
+                    <FaSun className="h-3 w-3 text-amber-500" />
+                )}
+            </span>
         </button>
     )
 }
