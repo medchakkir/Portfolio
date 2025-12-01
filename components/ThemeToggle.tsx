@@ -39,6 +39,9 @@ export function ThemeToggle() {
         const html = document.documentElement
         const newIsDark = !isDark
 
+        // Add smooth transition class
+        html.style.transition = 'background-color 0.3s ease, color 0.3s ease'
+
         // Mettre à jour l'état
         setIsDark(newIsDark)
 
@@ -50,6 +53,11 @@ export function ThemeToggle() {
             html.classList.remove('dark')
             localStorage.setItem('theme', 'light')
         }
+
+        // Remove transition class after animation completes
+        setTimeout(() => {
+            html.style.transition = ''
+        }, 300)
     }
 
     if (!mounted) {
