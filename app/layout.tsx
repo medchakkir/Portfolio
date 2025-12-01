@@ -47,10 +47,10 @@ export default async function RootLayout({
         ? (locale as Locale)
         : defaultLocale
 
-    const messages = await getMessages()
+    const messages = await getMessages({ locale: validLocale })
 
     return (
-        <html lang={validLocale} suppressHydrationWarning>
+        <html lang={validLocale}>
             <head>
                 <script
                     dangerouslySetInnerHTML={{
