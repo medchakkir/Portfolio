@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
-import './globals.css'
-import { Analytics } from '@vercel/analytics/next'
-import { SpeedInsights } from '@vercel/speed-insights/next'
 import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
-import { locales, type Locale, defaultLocale } from '@/i18n/config'
+import { defaultLocale, type Locale } from '@/i18n/config'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Analytics } from '@vercel/analytics/next'
+import './globals.css'
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -34,23 +34,17 @@ export default async function RootLayout({
 }: Readonly<{
     children: React.ReactNode
 }>) {
-    let locale: string
+    let locale: Locale
     try {
-        locale = await getLocale()
+        locale = (await getLocale()) as Locale
     } catch {
-        // Fallback to default locale if getLocale fails
         locale = defaultLocale
     }
 
-    // Validate locale and fallback to default if invalid
-    const validLocale: Locale = locales.includes(locale as Locale)
-        ? (locale as Locale)
-        : defaultLocale
-
-    const messages = await getMessages({ locale: validLocale })
+    const messages = await getMessages()
 
     return (
-        <html lang={validLocale}>
+        <html lang={locale}>
             <head>
                 <script
                     dangerouslySetInnerHTML={{
