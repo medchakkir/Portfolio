@@ -1,63 +1,63 @@
 {
-    "nav": {
-        "about": "À propos",
-        "projects": "Projets",
-        "skills": "Compétences",
-        "contact": "Contact"
+  "nav": {
+    "about": "À propos",
+    "projects": "Projets",
+    "skills": "Compétences",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "👋 Salut, je suis",
+    "title": "Développeur Full-Stack",
+    "description": "Développeur full-stack explorant l'IA, l'apprentissage automatique et la cybersécurité pour construire des produits numériques plus intelligents et plus résilients.",
+    "downloadResume": "Télécharger le CV",
+    "getInTouch": "Me contacter"
+  },
+  "about": {
+    "title": "À propos de moi",
+    "paragraph1": "Basé à Djibouti, je suis Mohamed Ali Youssouf, communément connu sous le nom de Mohamed Chakkir. J'ai obtenu mon diplôme en Informatique en 2025, et ma passion pour le développement web a commencé bien avant cela, évoluant depuis mes premières explorations au lycée vers une spécialisation en développement full-stack moderne avec React/Next.js et Express.js ou Laravel.",
+    "paragraph2": "Je me développe actuellement dans l'IA, l'apprentissage automatique et la cybersécurité alors que je me prépare pour des études supérieures, et j'apporte de solides compétences en communication multilingue en français, anglais, arabe et somali comme langue maternelle."
+  },
+  "projects": {
+    "title": "Projets en vedette",
+    "viewCode": "Voir le code",
+    "liveDemo": "Démo en direct",
+    "certicarte": {
+      "title": "CertiCarte",
+      "description": "Un système de gestion de certification qui facilite et automatise la génération des cartes d’identité étudiantes, des certificats étudiants et des listes de présence en classe."
     },
-    "hero": {
-        "greeting": "👋 Salut, je suis",
-        "title": "Développeur Full-Stack",
-        "description": "Développeur full-stack explorant l'IA, l'apprentissage automatique et la cybersécurité pour construire des produits numériques plus intelligents et plus résilients.",
-        "downloadResume": "Télécharger le CV",
-        "getInTouch": "Me contacter"
+    "nassibpay": {
+      "title": "NassibPay",
+      "description": "Une plateforme de gestion des cotisations qui simplifie la gestion des membres, le suivi des paiements, le reporting financier et la supervision administrative grâce à une interface web intuitive."
     },
-    "about": {
-        "title": "À propos de moi",
-        "paragraph1": "Basé à Djibouti, je suis Mohamed Ali Youssouf, communément connu sous le nom de Mohamed Chakkir. J'ai obtenu mon diplôme en Informatique en 2025, et ma passion pour le développement web a commencé bien avant cela, évoluant depuis mes premières explorations au lycée vers une spécialisation en développement full-stack moderne avec React/Next.js et Express.js ou Laravel.",
-        "paragraph2": "Je me développe actuellement dans l'IA, l'apprentissage automatique et la cybersécurité alors que je me prépare pour des études supérieures, et j'apporte de solides compétences en communication multilingue en français, anglais, arabe et somali comme langue maternelle."
-    },
-    "projects": {
-        "title": "Projets en vedette",
-        "viewCode": "Voir le code",
-        "liveDemo": "Démo en direct",
-        "certicarte": {
-            "title": "CertiCarte",
-            "description": "Un système de gestion de certification qui facilite et automatise la génération des cartes d’identité étudiantes, des certificats étudiants et des listes de présence en classe."
-        },
-        "nassibpay": {
-            "title": "NassibPay",
-            "description": "Une plateforme de gestion des cotisations qui simplifie la gestion des membres, le suivi des paiements, le reporting financier et la supervision administrative grâce à une interface web intuitive."
-        },
-        "laragigs": {
-            "title": "LaraGigs",
-            "description": "Une plateforme d’offres d’emploi pour les employeurs et les chercheurs d’emploi qui relie les talents aux opportunités grâce à une interface intuitive, offrant une recherche avancée, une gestion des offres d’emploi et une communication fluide."
-        }
-    },
-    "skills": {
-        "title": "Compétences & Technologies",
-        "category": "Catégorie"
-    },
-    "contact": {
-        "title": "Restons en contact !",
-        "description": "Je suis toujours ouvert à discuter de nouveaux projets, idées créatives ou opportunités pour faire partie de vos visions.",
-        "github": {
-            "title": "GitHub",
-            "description": "Découvrez mon code"
-        },
-        "email": {
-            "title": "Email",
-            "description": "Envoyez-moi un message"
-        },
-        "linkedin": {
-            "title": "LinkedIn",
-            "description": "Connectez-vous professionnellement"
-        }
-    },
-    "footer": {
-        "copyright": "© {year} Mohamed Chakkir. Tous droits réservés.",
-        "github": "GitHub",
-        "email": "Email",
-        "linkedin": "LinkedIn"
+    "laragigs": {
+      "title": "LaraGigs",
+      "description": "Une plateforme d’offres d’emploi pour les employeurs et les chercheurs d’emploi qui relie les talents aux opportunités grâce à une interface intuitive, offrant une recherche avancée, une gestion des offres d’emploi et une communication fluide."
     }
+  },
+  "skills": {
+    "title": "Compétences & Technologies",
+    "category": "Catégorie"
+  },
+  "contact": {
+    "title": "Restons en contact !",
+    "description": "Je suis toujours ouvert à discuter de nouveaux projets, idées créatives ou opportunités pour faire partie de vos visions.",
+    "github": {
+      "title": "GitHub",
+      "description": "Découvrez mon code"
+    },
+    "email": {
+      "title": "Email",
+      "description": "Envoyez-moi un message"
+    },
+    "linkedin": {
+      "title": "LinkedIn",
+      "description": "Connectez-vous professionnellement"
+    }
+  },
+  "footer": {
+    "copyright": "© {year} Mohamed Chakkir. Tous droits réservés.",
+    "github": "GitHub",
+    "email": "Email",
+    "linkedin": "LinkedIn"
+  }
 }
