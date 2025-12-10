@@ -5,6 +5,7 @@ import { getLocale, getMessages } from 'next-intl/server';
 import { defaultLocale, type Locale } from '@/i18n/config';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/next';
+import { StructuredData } from '@/components/StructuredData';
 import './globals.css';
 
 const geistSans = Geist({
@@ -17,15 +18,45 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL as string;
 export const metadata: Metadata = {
-  title: 'Mohamed Chakkir | Full-Stack Developer',
+  metadataBase: new URL(baseUrl),
+  title: {
+    default: 'Mohamed Chakkir | Full-Stack Developer',
+    template: '%s | Mohamed Chakkir',
+  },
   description:
-    'Full-stack developer crafting efficient, reliable, and innovative digital products.',
+    'Full-stack developer crafting efficient, reliable, and innovative digital products. Specialized in modern web technologies and building scalable applications.',
+  keywords: [
+    'Full-Stack Developer',
+    'Web Developer',
+    'Next.js',
+    'React',
+    'TypeScript',
+    'Laravel',
+    'PHP',
+    'Portfolio',
+  ],
+  authors: [{ name: 'Mohamed Chakkir' }],
+  creator: 'Mohamed Chakkir',
   openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    alternateLocale: ['fr_FR'],
+    url: baseUrl,
+    siteName: 'Mohamed Chakkir Portfolio',
     title: 'Mohamed Chakkir | Full-Stack Developer',
     description:
       'Full-stack developer crafting efficient, reliable, and innovative digital products.',
-    type: 'website',
+    // Add your OpenGraph image when available
+    // images: [
+    //   {
+    //     url: `${baseUrl}/og-image.jpg`,
+    //     width: 1200,
+    //     height: 630,
+    //     alt: 'Mohamed Chakkir - Full-Stack Developer',
+    //   },
+    // ],
   },
 };
 
@@ -49,19 +80,16 @@ export default async function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              (function() {
-                try {
-                  const theme = localStorage.getItem('theme');
-                  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                  
-                  if (theme === 'dark' || (!theme && prefersDark)) {
-                    document.documentElement.classList.add('dark');
-                  } else {
-                    document.documentElement.classList.remove('dark');
-                  }
-                } catch (e) {}
-              })();
-            `,
+      (function () {
+        try {
+          const savedTheme = localStorage.getItem('theme');
+          const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const useDark = savedTheme ? savedTheme === 'dark' : systemDark;
+
+          document.documentElement.classList.toggle('dark', useDark);
+        } catch (_) {}
+      })();
+    `,
           }}
         />
       </head>
@@ -69,6 +97,7 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} bg-white antialiased dark:bg-gray-900`}
       >
         <NextIntlClientProvider messages={messages}>
+          <StructuredData />
           {children}
         </NextIntlClientProvider>
         <Analytics />

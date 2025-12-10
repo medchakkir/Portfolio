@@ -45,7 +45,14 @@ export function ProjectCard({
           {hasImage ? (
             <>
               <div className="relative h-full w-full">
-                <Image src={image!} alt={title} fill className="object-cover" />
+                <Image
+                  src={image!}
+                  alt={title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  loading="lazy"
+                />
               </div>
               <div className="absolute inset-0 bg-linear-to-t from-black/20 via-transparent to-transparent opacity-0 transition-opacity duration-300" />
             </>
