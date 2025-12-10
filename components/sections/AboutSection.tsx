@@ -11,7 +11,7 @@ export function AboutSection() {
   return (
     <Section
       id="about"
-      className="bg-pattern-dots relative h-screen bg-white dark:bg-gray-900"
+      className="bg-pattern-dots relative bg-white dark:bg-gray-900"
     >
       <Container className="relative z-10">
         <motion.div

@@ -55,7 +55,7 @@
     }
   },
   "footer": {
-    "copyright": "© {year} Mohamed Chakkir. All rights reserved.",
+    "copyright": "© {year} Mohamed Chakkir.",
     "github": "GitHub",
     "email": "Email",
     "linkedin": "LinkedIn"

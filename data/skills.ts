@@ -1,4 +1,5 @@
 import { IconType } from 'react-icons';
+import { FcLinux } from 'react-icons/fc';
 import {
   FaJs,
   FaReact,
@@ -9,7 +10,6 @@ import {
   FaGitAlt,
   FaGithub,
   FaDocker,
-  FaLinux,
   FaCode,
 } from 'react-icons/fa';
 import {
@@ -79,7 +79,7 @@ export const skills: SkillCategory[] = [
         color: 'text-gray-800 dark:text-white',
       },
       { name: 'Docker', icon: FaDocker, color: 'text-sky-500' },
-      { name: 'Linux', icon: FaLinux, color: 'text-slate-500' },
+      { name: 'Linux', icon: FcLinux, color: 'text-slate-500' },
       { name: 'Agile (Jira)', icon: SiJira, color: 'text-blue-700' },
       { name: 'REST APIs', icon: FaCode, color: 'text-violet-500' },
       { name: 'Postman', icon: SiPostman, color: 'text-orange-500' },

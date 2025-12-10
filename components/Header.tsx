@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeToggle } from './ThemeToggle';
 import { LanguageToggle } from './LanguageToggle';
 import { useTranslations } from 'next-intl';
@@ -40,7 +41,6 @@ export function Header() {
       observer.observe(section);
     });
 
-    // Also check on scroll for hero section (which might be at top)
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       if (scrollPosition < 100) {
@@ -74,46 +74,28 @@ export function Header() {
     let divider: Element | null = null;
 
     if (previousSectionId === null) {
-      const allMarkers = document.querySelectorAll('.scroll-marker');
-      if (allMarkers.length > 0) {
-        allMarkers.forEach((marker) => {
-          const markerSectionId = marker.getAttribute('data-section-id');
-          if (!markerSectionId && !divider) {
-            divider = marker;
-          }
-        });
-        if (!divider && allMarkers[0]) {
-          divider = allMarkers[0];
-        }
-      }
-    } else {
-      const allMarkers = document.querySelectorAll('.scroll-marker');
-      allMarkers.forEach((marker) => {
-        const markerSectionId = marker.getAttribute('data-section-id');
-        if (markerSectionId === previousSectionId) {
-          divider = marker;
-        }
-      });
-    }
-
-    const headerHeight = 64;
-
-    if (divider) {
-      const dividerPosition =
-        divider.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({
-        top: dividerPosition - headerHeight,
-        behavior: 'smooth',
-      });
-    } else {
       const section = document.querySelector(href);
       if (section) {
-        const sectionPosition =
-          section.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({
-          top: sectionPosition - headerHeight,
+        (section as HTMLElement).scrollIntoView({
           behavior: 'smooth',
+          block: 'start',
         });
+      }
+    } else {
+      divider = document.querySelector(`#divider-${previousSectionId}`);
+      if (divider) {
+        (divider as HTMLElement).scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      } else {
+        const section = document.querySelector(href);
+        if (section) {
+          (section as HTMLElement).scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
+        }
       }
     }
 
@@ -182,37 +164,64 @@ export function Header() {
                 aria-label="Toggle menu"
                 aria-expanded={mobileMenuOpen}
               >
-                {mobileMenuOpen ? (
-                  <FaTimes className="h-6 w-6" />
-                ) : (
-                  <FaBars className="h-6 w-6" />
-                )}
+                <motion.div
+                  animate={{ rotate: mobileMenuOpen ? 90 : 0 }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                >
+                  {mobileMenuOpen ? (
+                    <FaTimes className="h-6 w-6" />
+                  ) : (
+                    <FaBars className="h-6 w-6" />
+                  )}
+                </motion.div>
               </button>
             </div>
           </div>
         </nav>
 
         {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="border-t border-gray-200 bg-white sm:hidden dark:border-gray-800 dark:bg-gray-900">
-            <div className="flex flex-col py-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className={`px-4 py-3 text-base font-medium transition-colors ${
-                    activeSection === link.href
-                      ? 'border-l-4 border-blue-600 bg-gray-100 font-semibold text-gray-900 dark:border-blue-400 dark:bg-gray-800 dark:text-gray-100'
-                      : 'text-gray-900 hover:bg-gray-50 dark:text-gray-100 dark:hover:bg-gray-800'
-                  }`}
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </div>
-        )}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className="overflow-hidden border-t border-gray-200 bg-white sm:hidden dark:border-gray-800 dark:bg-gray-900"
+            >
+              <motion.div
+                initial={{ y: -20 }}
+                animate={{ y: 0 }}
+                exit={{ y: -20 }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                className="flex flex-col py-4"
+              >
+                {navLinks.map((link, index) => (
+                  <motion.a
+                    key={link.href}
+                    href={link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{
+                      duration: 0.2,
+                      delay: index * 0.05,
+                      ease: 'easeOut',
+                    }}
+                    className={`px-4 py-3 text-base font-medium transition-colors ${
+                      activeSection === link.href
+                        ? 'border-l-4 border-blue-600 bg-gray-100 font-semibold text-gray-900 dark:border-blue-400 dark:bg-gray-800 dark:text-gray-100'
+                        : 'text-gray-900 hover:bg-gray-50 dark:text-gray-100 dark:hover:bg-gray-800'
+                    }`}
+                  >
+                    {link.label}
+                  </motion.a>
+                ))}
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );

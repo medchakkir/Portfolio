@@ -92,12 +92,22 @@ export function HeroSection() {
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
-                  const element = document.querySelector('#contact');
-                  if (element) {
-                    element.scrollIntoView({
+                  // Scroll to divider after "skills" section to show "contact" section
+                  const divider = document.querySelector('#divider-skills');
+                  if (divider) {
+                    (divider as HTMLElement).scrollIntoView({
                       behavior: 'smooth',
                       block: 'start',
                     });
+                  } else {
+                    // Fallback to section if no divider found
+                    const section = document.querySelector('#contact');
+                    if (section) {
+                      (section as HTMLElement).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start',
+                      });
+                    }
                   }
                 }}
                 whileHover={{ scale: 1.05 }}

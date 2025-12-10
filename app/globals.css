@@ -33,6 +33,19 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Box-sizing border-box for all elements */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Scroll margin for dividers and sections to account for sticky header */
+.scroll-marker,
+section[id] {
+  scroll-margin-top: 64px;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
