@@ -23,12 +23,13 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL as string;
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const localeUrl = `${baseUrl}/${locale}`;
-  const ogLocale = locale === 'en' ? 'en_US' : 'fr_FR';
-  const alternateLocale = locale === 'en' ? 'fr_FR' : 'en_US';
+  const validLocale = locale as Locale;
+  const localeUrl = `${baseUrl}/${validLocale}`;
+  const ogLocale = validLocale === 'en' ? 'en_US' : 'fr_FR';
+  const alternateLocale = validLocale === 'en' ? 'fr_FR' : 'en_US';
 
   return {
     metadataBase: new URL(baseUrl),
@@ -89,13 +90,14 @@ export default async function LocaleLayout({
   params,
 }: Readonly<{
   children: React.ReactNode;
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }>) {
   const { locale } = await params;
+  const validLocale = locale as Locale;
   const messages = await getMessages();
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={validLocale} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
