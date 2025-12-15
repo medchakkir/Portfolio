@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useRef, useEffect, useTransition } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useRef, useEffect, useTransition, useCallback } from 'react';
 import { FaGlobe, FaChevronDown } from 'react-icons/fa';
 import { Locale } from '@/i18n/config';
 import { useLocale } from 'next-intl';
+import { useRouter, usePathname } from '@/i18n/routing';
 
 const languages: { code: Locale; name: string; nativeName: string }[] = [
   { code: 'en', name: 'English', nativeName: 'English' },
@@ -14,6 +14,7 @@ const languages: { code: Locale; name: string; nativeName: string }[] = [
 export function LanguageToggle() {
   const locale = useLocale();
   const router = useRouter();
+  const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -37,33 +38,29 @@ export function LanguageToggle() {
     };
   }, [isOpen]);
 
-  const changeLanguage = (newLocale: Locale) => {
-    if (newLocale === locale) {
+  const changeLanguage = useCallback(
+    (newLocale: Locale) => {
+      if (newLocale === locale) {
+        setIsOpen(false);
+        return;
+      }
+
       setIsOpen(false);
-      return;
-    }
 
-    setIsOpen(false);
-
-    // Add smooth fade-out transition
-    document.documentElement.style.transition = 'opacity 0.2s ease-out';
-    document.documentElement.style.opacity = '0.7';
-
-    // Set cookie
-    document.cookie = `locale=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
-
-    // Use router refresh for smoother transition
-    startTransition(() => {
-      router.refresh();
-      // Fade back in after a short delay
-      setTimeout(() => {
-        document.documentElement.style.opacity = '1';
+      // Navigate to the new locale while preserving the current pathname
+      startTransition(() => {
+        router.replace(pathname, { locale: newLocale });
+        // Fade back in after a short delay
         setTimeout(() => {
-          document.documentElement.style.transition = '';
-        }, 200);
-      }, 100);
-    });
-  };
+          document.documentElement.style.opacity = '1';
+          setTimeout(() => {
+            document.documentElement.style.transition = '';
+          }, 200);
+        }, 100);
+      });
+    },
+    [locale, pathname, router]
+  );
 
   const currentLanguage = languages.find((lang) => lang.code === locale);
 
