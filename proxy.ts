@@ -9,4 +9,3 @@ export const config = {
   // - … the ones containing a file (e.g. `favicon.ico`)
   matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
 };
-
