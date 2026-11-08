@@ -18,7 +18,7 @@ export function SkillBadge({ skill }: SkillBadgeProps) {
             whileHover={{ y: -2 }}
             transition={{ duration: 0.3 }}
         >
-            <div className="flex items-center gap-2 rounded-full border border-gray-200 bg-gray-100 px-3 py-1.5 text-sm font-semibold text-gray-700 shadow-sm backdrop-blur-sm transition-all duration-200 hover:border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:border-gray-600">
+            <div className="flex items-center gap-2 rounded-full border border-gray-200 bg-gray-100 px-3 py-1.5 text-sm font-semibold text-gray-700 shadow-sm backdrop-blur-sm transition-all duration-200 hover:border-indigo-400 hover:shadow-indigo-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:border-indigo-400/60">
                 {IconComponent && (
                     <IconComponent
                         className={`shrink-0 text-base ${iconColor}`}
