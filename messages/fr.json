@@ -57,6 +57,17 @@
         "linkedin": {
             "title": "LinkedIn",
             "description": "Connectez-vous professionnellement"
+        },
+        "form": {
+            "title": "Ou envoyez-moi un message",
+            "name": "Nom",
+            "email": "E-mail",
+            "message": "Message",
+            "send": "Envoyer",
+            "sending": "Envoi...",
+            "success": "Merci ! Votre message a été envoyé. Je réponds bientôt.",
+            "error": "Une erreur est survenue. Réessayez ou écrivez-moi directement par e-mail.",
+            "unavailable": "Le formulaire est indisponible pour le moment. Écrivez-moi directement par e-mail."
         }
     },
     "footer": {
@@ -64,5 +75,25 @@
         "github": "GitHub",
         "email": "Email",
         "linkedin": "LinkedIn"
+    },
+    "timeline": {
+        "title": "Mon parcours",
+        "items": {
+            "school": {
+                "period": "Lycée",
+                "title": "Premiers pas en développement web",
+                "description": "Début de mes explorations du développement web, devenues une spécialisation en full-stack moderne."
+            },
+            "degree": {
+                "period": "2025",
+                "title": "Licence en informatique",
+                "description": "Diplômé à Djibouti, avec des projets full-stack en React/Next.js, Express.js et Laravel."
+            },
+            "ai": {
+                "period": "Aujourd’hui",
+                "title": "IA, machine learning et cybersécurité",
+                "description": "Je me forme à l’IA, au machine learning et à la cybersécurité en préparant des études postuniversitaires."
+            }
+        }
     }
 }

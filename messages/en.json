@@ -57,6 +57,17 @@
         "linkedin": {
             "title": "LinkedIn",
             "description": "Connect professionally"
+        },
+        "form": {
+            "title": "Or send me a message",
+            "name": "Name",
+            "email": "Email",
+            "message": "Message",
+            "send": "Send message",
+            "sending": "Sending...",
+            "success": "Thanks! Your message was sent. I'll reply soon.",
+            "error": "Something went wrong. Please try again or email me directly.",
+            "unavailable": "The form isn't available right now. Please email me directly."
         }
     },
     "footer": {
@@ -64,5 +75,25 @@
         "github": "GitHub",
         "email": "Email",
         "linkedin": "LinkedIn"
+    },
+    "timeline": {
+        "title": "My Journey",
+        "items": {
+            "school": {
+                "period": "High school",
+                "title": "First steps in web development",
+                "description": "Started exploring web development, which grew into a focus on modern full-stack work."
+            },
+            "degree": {
+                "period": "2025",
+                "title": "Computer Science degree",
+                "description": "Graduated in Djibouti, building full-stack projects with React/Next.js, Express.js and Laravel."
+            },
+            "ai": {
+                "period": "Now",
+                "title": "AI, machine learning and cybersecurity",
+                "description": "Expanding into AI, machine learning and cybersecurity while preparing for postgraduate studies."
+            }
+        }
     }
 }

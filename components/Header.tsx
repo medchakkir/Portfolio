@@ -65,7 +65,7 @@ export function Header() {
 
         const sectionToDividerMap: Record<string, string | null> = {
             about: null,
-            projects: 'about',
+            projects: 'journey',
             skills: 'projects',
             contact: 'skills',
         }
