@@ -40,7 +40,7 @@ export function ProjectCard({
             }}
             className="h-full"
         >
-            <motion.div className="flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white/90 shadow-md backdrop-blur-sm transition-all duration-300 ease-out hover:border-gray-400 dark:border-gray-700 dark:bg-gray-800/90 dark:hover:border-gray-600">
+            <motion.div className="flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white/90 shadow-md backdrop-blur-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-indigo-400 hover:shadow-xl hover:shadow-indigo-500/10 dark:border-gray-700 dark:bg-gray-800/90 dark:hover:border-indigo-400/60">
                 <div className="relative aspect-video w-full overflow-hidden bg-gray-50 dark:bg-gray-700">
                     {hasImage ? (
                         <>
@@ -74,7 +74,7 @@ export function ProjectCard({
                         {tags.map((item) => (
                             <motion.span
                                 key={item}
-                                className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700 transition-all duration-300 dark:bg-gray-700 dark:text-gray-300"
+                                className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-700 transition-all duration-300 dark:bg-indigo-500/15 dark:text-indigo-200"
                                 whileHover={{ y: -2 }}
                                 transition={{ duration: 0.2 }}
                             >

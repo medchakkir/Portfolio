@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Container } from '@/components/Container'
 import { Section } from '@/components/Section'
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
+import { ContactForm } from '@/components/ContactForm'
 import { useTranslations } from 'next-intl'
 
 export function ContactSection() {
@@ -104,6 +105,7 @@ export function ContactSection() {
                             </p>
                         </motion.a>
                     </div>
+                    <ContactForm />
                 </motion.div>
             </Container>
         </Section>

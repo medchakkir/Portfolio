@@ -5,6 +5,7 @@ import { getLocale, getMessages } from 'next-intl/server'
 import { defaultLocale, type Locale } from '@/i18n/config'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from '@vercel/analytics/next'
+import { siteDescription, siteName, siteTitle, siteUrl } from '@/lib/site'
 import './globals.css'
 
 
@@ -19,15 +20,47 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-    title: 'Mohamed Chakkir | Full-Stack Developer',
-    description:
-        'Full-stack developer crafting efficient, reliable, and innovative digital products.',
+    metadataBase: new URL(siteUrl),
+    title: siteTitle,
+    description: siteDescription,
+    keywords: [
+        'Mohamed Chakkir',
+        'Full-Stack Developer',
+        'Djibouti',
+        'Next.js',
+        'React',
+        'Laravel',
+        'Portfolio',
+    ],
+    authors: [{ name: siteName, url: siteUrl }],
+    alternates: { canonical: '/' },
     openGraph: {
-        title: 'Mohamed Chakkir | Full-Stack Developer',
-        description:
-            'Full-stack developer crafting efficient, reliable, and innovative digital products.',
+        title: siteTitle,
+        description: siteDescription,
+        url: siteUrl,
+        siteName,
         type: 'website',
     },
+    twitter: {
+        card: 'summary_large_image',
+        title: siteTitle,
+        description: siteDescription,
+    },
+}
+
+const personJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: siteName,
+    alternateName: 'Mohamed Ali Youssouf',
+    url: siteUrl,
+    jobTitle: 'Full-Stack Developer',
+    address: { '@type': 'PostalAddress', addressCountry: 'DJ' },
+    knowsLanguage: ['fr', 'en', 'ar', 'so'],
+    sameAs: [
+        'https://github.com/medchakkir',
+        'https://linkedin.com/in/medchakkir',
+    ],
 }
 
 export default async function RootLayout({
@@ -47,6 +80,12 @@ export default async function RootLayout({
     return (
         <html lang={locale} suppressHydrationWarning>
             <head>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify(personJsonLd),
+                    }}
+                />
                 <script
                     dangerouslySetInnerHTML={{
                         __html: `

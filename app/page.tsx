@@ -5,6 +5,7 @@ import { Footer } from '@/components/Footer'
 import { BackToTopButton } from '@/components/BackToTopButton'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { AboutSection } from '@/components/sections/AboutSection'
+import { TimelineSection } from '@/components/sections/TimelineSection'
 import { ProjectsSection } from '@/components/sections/ProjectsSection'
 import { SkillsSection } from '@/components/sections/SkillsSection'
 import { ContactSection } from '@/components/sections/ContactSection'
@@ -16,6 +17,7 @@ export default function Home() {
             <main className="flex-1">
                 <HeroSection />
                 <AboutSection />
+                <TimelineSection />
                 <ProjectsSection />
                 <SkillsSection />
                 <ContactSection />

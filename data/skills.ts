@@ -25,6 +25,7 @@ import {
   SiJira,
   SiPostman,
   SiDrizzle,
+  SiVite,
 } from 'react-icons/si';
 
 export interface SkillInfo {
@@ -53,6 +54,7 @@ export const skills: SkillCategory[] = [
       { name: 'HTML', icon: FaHtml5, color: 'text-orange-500' },
       { name: 'CSS', icon: FaCss3Alt, color: 'text-blue-500' },
       { name: 'Tailwind', icon: SiTailwindcss, color: 'text-sky-400' },
+      { name: 'Vite', icon: SiVite, color: 'text-violet-400' },
     ],
   },
   {
