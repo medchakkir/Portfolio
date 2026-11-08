@@ -32,6 +32,10 @@
         "laragigs": {
             "title": "LaraGigs",
             "description": "Une plateforme d’offres d’emploi pour les employeurs et les chercheurs d’emploi qui relie les talents aux opportunités grâce à une interface intuitive, offrant une recherche avancée, une gestion des offres d’emploi et une communication fluide."
+        },
+        "cvpro": {
+            "title": "CV-Pro",
+            "description": "Un créateur de CV : choix du modèle, formulaire guidé, aperçu en direct, score de compatibilité ATS et export PDF professionnel, avec aide à la rédaction par IA."
         }
     },
     "skills": {

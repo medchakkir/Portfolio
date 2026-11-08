@@ -25,4 +25,9 @@ export const projects: Project[] = [
         github: 'https://github.com/medchakkir/LaraGigs',
         // demo: 'https://laragigs.laravel.cloud',
     },
+    {
+        slug: 'cvpro',
+        tags: ['React', 'Vite', 'Tailwind', 'Laravel'],
+        github: 'https://github.com/medchakkir/cvPro',
+    },
 ]

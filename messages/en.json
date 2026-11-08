@@ -32,6 +32,10 @@
         "laragigs": {
             "title": "LaraGigs",
             "description": "A Job Listing Platform that connects talent with opportunities through an intuitive interface, offering advanced search, and seamless communication."
+        },
+        "cvpro": {
+            "title": "CV-Pro",
+            "description": "A CV Builder that lets users pick a template, fill in a guided form, preview live, check ATS compatibility, and export a professional PDF, with AI-assisted writing."
         }
     },
     "skills": {
