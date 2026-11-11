@@ -1,58 +1,94 @@
 import { cn } from '@/lib/utils'
 import { type ReactNode } from 'react'
-
-interface SectionProps {
-    id?: string
-    children: ReactNode
-    className?: string
-    showDivider?: boolean
-}
+import { Container } from './Container'
 
 export function Section({
     id,
     children,
     className = '',
-    showDivider = true,
-}: SectionProps) {
+    rule = true,
+}: {
+    id?: string
+    children: ReactNode
+    className?: string
+    rule?: boolean
+}) {
     return (
-        <>
-            <section
-                id={id}
-                className={cn(
-                    'box-border flex py-12 sm:py-16 lg:py-20',
-                    className
-                )}
-            >
+        <section id={id} className={cn('py-16 sm:py-24', className)}>
+            <Container>
+                {rule && <div className="border-rule mb-10 border-t" />}
                 {children}
-            </section>
-            {showDivider && (
+            </Container>
+        </section>
+    )
+}
+
+export function Eyebrow({ children }: { children: ReactNode }) {
+    return (
+        <p className="text-accent-text text-sm font-medium tracking-[0.12em] uppercase">
+            {children}
+        </p>
+    )
+}
+
+export function MetaStrip({
+    items,
+    marker = false,
+}: {
+    items: { label: string; value: ReactNode }[]
+    marker?: boolean
+}) {
+    return (
+        <dl className="border-rule grid grid-cols-2 border-y lg:grid-cols-4">
+            {items.map((item, i) => (
                 <div
-                    id={id ? `divider-${id}` : undefined}
-                    className="scroll-marker relative"
-                    data-section-id={id}
+                    key={item.label + i}
+                    className="border-rule px-0 py-5 not-last:border-b odd:border-r even:pl-5 lg:border-r lg:border-b-0 lg:px-5 lg:first:pl-0 lg:last:border-r-0"
                 >
-                    <div className="absolute inset-0 flex items-center">
-                        <div className="w-full border-t border-gray-200 dark:border-gray-800"></div>
-                    </div>
-                    <div className="relative flex justify-center">
-                        <span className="bg-white px-4 text-gray-400 dark:bg-gray-900 dark:text-gray-600">
-                            <svg
-                                className="h-5 w-5"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M19 9l-7 7-7-7"
-                                />
-                            </svg>
-                        </span>
-                    </div>
+                    {marker && (
+                        <span
+                            className="bg-accent mb-3 block size-2"
+                            aria-hidden
+                        />
+                    )}
+                    <dt className="text-muted text-xs tracking-[0.12em] uppercase">
+                        {item.label}
+                    </dt>
+                    <dd className="mt-2 text-lg leading-snug font-bold">
+                        {item.value}
+                    </dd>
                 </div>
-            )}
-        </>
+            ))}
+        </dl>
+    )
+}
+
+export function ArrowRight({ className = 'size-4' }: { className?: string }) {
+    return (
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            className={className}
+            aria-hidden
+        >
+            <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
+    )
+}
+
+export function ArrowUpRight({ className = 'size-4' }: { className?: string }) {
+    return (
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            className={className}
+            aria-hidden
+        >
+            <path d="M7 17 17 7M8 7h9v9" />
+        </svg>
     )
 }

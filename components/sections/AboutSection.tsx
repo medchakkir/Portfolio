@@ -1,39 +1,31 @@
-'use client'
-
-import { motion } from 'framer-motion'
-import { Container } from '@/components/Container'
-import { Section } from '@/components/Section'
-import { useTranslations } from 'next-intl'
+import { Section, Eyebrow, MetaStrip } from '@/components/Section'
+import { about } from '@/data/content'
 
 export function AboutSection() {
-    const t = useTranslations('about')
-
     return (
-        <Section
-            id="about"
-            className="bg-pattern-dots relative h-screen bg-white dark:bg-gray-900"
-        >
-            <Container className="relative z-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="mx-auto max-w-3xl text-center"
-                >
-                    <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 sm:mb-6 sm:text-5xl lg:text-6xl dark:text-gray-100">
-                        {t('title')}
+        <Section id="about">
+            <div className="grid gap-8 md:grid-cols-2 md:gap-12">
+                <div>
+                    <Eyebrow>About</Eyebrow>
+                    <h2 className="mt-5 max-w-sm text-3xl leading-tight font-extrabold tracking-tight sm:text-4xl">
+                        {about.heading}
                     </h2>
-                    <div className="space-y-6 text-left">
-                        <p className="text-lg leading-relaxed text-gray-700 sm:text-xl dark:text-gray-300">
-                            {t('paragraph1')}
-                        </p>
-                        <p className="text-lg leading-relaxed text-gray-700 sm:text-xl dark:text-gray-300">
-                            {t('paragraph2')}
-                        </p>
-                    </div>
-                </motion.div>
-            </Container>
+                </div>
+                <div className="space-y-6 text-lg leading-relaxed">
+                    {about.paragraphs.map((p) => (
+                        <p key={p}>{p}</p>
+                    ))}
+                </div>
+            </div>
+            <div className="mt-16">
+                <MetaStrip
+                    marker
+                    items={about.focus.map((f) => ({
+                        label: 'Current focus',
+                        value: f,
+                    }))}
+                />
+            </div>
         </Section>
     )
 }

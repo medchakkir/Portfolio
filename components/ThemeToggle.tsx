@@ -1,102 +1,48 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { FaSun, FaMoon } from 'react-icons/fa'
+import { useEffect, useState } from 'react'
 
 export function ThemeToggle() {
-    const [isDark, setIsDark] = useState(false)
-    const [mounted, setMounted] = useState(false)
+    const [dark, setDark] = useState(false)
 
     useEffect(() => {
-        // Fonction pour obtenir le thème initial
-        const getInitialTheme = () => {
-            if (typeof window === 'undefined') return false
-
-            const stored = localStorage.getItem('theme')
-            if (stored === 'dark' || stored === 'light') {
-                return stored === 'dark'
-            }
-
-            // Si pas de préférence stockée, utiliser la préférence système
-            return window.matchMedia('(prefers-color-scheme: dark)').matches
-        }
-
-        const initialDark = getInitialTheme()
         // eslint-disable-next-line react-hooks/set-state-in-effect
-        setIsDark(initialDark)
-        setMounted(true)
-
-        // Appliquer le thème immédiatement
-        const html = document.documentElement
-        if (initialDark) {
-            html.classList.add('dark')
-        } else {
-            html.classList.remove('dark')
-        }
+        setDark(document.documentElement.classList.contains('dark'))
     }, [])
 
-    const toggleTheme = () => {
-        const html = document.documentElement
-        const newIsDark = !isDark
-
-        // Add smooth transition class
-        html.style.transition = 'background-color 0.3s ease, color 0.3s ease'
-
-        // Mettre à jour l'état
-        setIsDark(newIsDark)
-
-        // Appliquer/retirer la classe dark
-        if (newIsDark) {
-            html.classList.add('dark')
-            localStorage.setItem('theme', 'dark')
-        } else {
-            html.classList.remove('dark')
-            localStorage.setItem('theme', 'light')
-        }
-
-        // Remove transition class after animation completes
-        setTimeout(() => {
-            html.style.transition = ''
-        }, 300)
-    }
-
-    if (!mounted) {
-        // Rendu initial pour éviter le flash
-        return (
-            <div className="relative inline-flex h-6 w-11 items-center rounded-full bg-gray-300 transition-colors">
-                <span className="inline-block h-4 w-4 translate-x-1 rounded-full bg-white transition-transform" />
-            </div>
-        )
+    const toggle = () => {
+        const next = !dark
+        setDark(next)
+        document.documentElement.classList.toggle('dark', next)
+        try {
+            localStorage.setItem('theme', next ? 'dark' : 'light')
+        } catch {}
     }
 
     return (
         <button
-            onClick={toggleTheme}
             type="button"
-            className="relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none dark:focus:ring-offset-gray-800"
-            aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-            role="switch"
-            aria-checked={isDark}
+            onClick={toggle}
+            aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+            className="border-rule hover:bg-chip flex size-9 items-center justify-center border"
         >
-            {/* Track */}
-            <span
-                className={`inline-block h-full w-full rounded-full transition-colors duration-300 ${
-                    isDark ? 'bg-blue-600' : 'bg-gray-300 dark:bg-gray-600'
-                }`}
-            />
-
-            {/* Thumb with icon */}
-            <span
-                className={`absolute flex h-5 w-5 items-center justify-center rounded-full bg-white shadow-md transition-transform duration-300 ${
-                    isDark ? 'translate-x-6' : 'translate-x-0.5'
-                }`}
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                className="size-4"
+                aria-hidden
             >
-                {isDark ? (
-                    <FaMoon className="h-3 w-3 text-blue-600" />
+                {dark ? (
+                    <>
+                        <circle cx="12" cy="12" r="4" />
+                        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+                    </>
                 ) : (
-                    <FaSun className="h-3 w-3 text-amber-500" />
+                    <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
                 )}
-            </span>
+            </svg>
         </button>
     )
 }
